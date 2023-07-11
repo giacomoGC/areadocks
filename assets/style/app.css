@@ -1,0 +1,349 @@
+body {
+  margin: 0;
+  pointer-events: none;
+  touch-action: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: white;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.fullscreen {
+  height: 100vH;
+  width: 100%;
+}
+
+.black-bg {
+  height: 100%;
+  background-color: black;
+}
+
+.introAnimation-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.introAnimation-wrapper .logo-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.introAnimation-wrapper .logo-container .logo {
+  max-width: 300px;
+  z-index: 5;
+}
+
+#hero {
+  padding-right: 15px;
+  width: calc(100% - 15px);
+}
+
+#hero, #hero__world__img-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#hero__bg-first {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('../../assets/images/stars-bg-placeholder.jpg');
+  z-index: 5;
+}
+
+#hero__bg-black-gradient, #loftRestaurant__bg-black-gradient, .bg-black-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 15;
+  background: radial-gradient(transparent 15%, black 70%);
+}
+
+#hero__world {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#hero__world__img-container {
+  overflow: hidden;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+#hero__world__img {
+  height: 60%;
+  opacity: 0;
+  z-index: 10;
+}
+
+#hero__main-title {
+  position: absolute;
+  width: 100%;
+  top: 75px;
+  left: 0;
+  opacity: 1;
+  z-index: 20;
+}
+
+#zodiac-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: -15%;
+  opacity: 0;
+  transform: scale(0.8);
+  z-index: 15;
+}
+
+#zodiac-wrapper__img {
+  width: calc(25% - 10px);
+  opacity: 0.64;
+  transition: all 0.3s ease-in-out;
+}
+
+#zodiac-wrapper__img:hover {
+  opacity: 1;
+}
+
+#zodiac-wrapper__img:first-child, #zodiac-wrapper__img:last-child {
+  position: relative;
+  top: 25%;
+}
+
+#scrollSectionsAfterHero {
+
+}
+
+#leaves {
+  position: relative;
+  background-image: url('../../assets/images/stonewall.jpg');
+  background-size: cover;
+  overflow-x: clip;
+  overflow-y: visible;
+  min-height: auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+#leaves .leaves-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 100%);
+  z-index: 10;
+}
+
+#leaves .leaves__img {
+  position: absolute;
+  z-index: 15;
+}
+
+#leaves .leaves__img:nth-child(2) {
+  width: 63%;
+  position: relative;
+}
+
+#leaves .leaves__img:nth-child(3) {
+  width: 45%;
+  bottom: 0;
+  z-index: 20;
+  left: 0;
+}
+
+#leaves .leaves__img:nth-child(4) {
+  width: 75%;
+  z-index: 25;
+  left: 0;
+  transform-origin: top left;
+}
+
+#leaves .leaves__img:nth-child(5) {
+  right: 17%;
+  width: 70%;
+  z-index: 20;
+  transform-origin: left;
+}
+
+#leaves .leaves__img:nth-child(6) {
+  right: 0;
+  width: 70%;
+  transform-origin: top right;
+}
+
+#leaves .leaves__img:nth-child(7) {
+  width: 35%;
+  right: 0;
+  transform-origin: right;
+}
+
+#leaves .leaves__img:nth-child(8) {
+  width: 58%;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  transform-origin: right;
+}
+
+.leaves__img.ghost_fixer {
+  opacity: 0;
+  width: 58%;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+}
+
+#loftRestaurant {
+  background-image: url('../../assets/images/stonewall.jpg');
+  background-size: cover;
+  min-height: 100vH;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start !important;
+  padding-top: 45px;;
+}
+
+#loftRestaurant, #loftRestaurant .crystal-wrapper, #loftRestaurant .crystal-zodiac-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#loftRestaurant .crystal-wrapper {
+  max-width: 400px;
+  margin-top: 5%;
+  position: relative;
+  z-index: 25;
+}
+
+#loftRestaurant h2 {
+  text-align: center;
+  margin-top: 55px;
+  margin-bottom: 75px;
+  position: relative;
+  z-index: 25;
+}
+
+#loftRestaurant .crystal-zodiac-wrapper {
+  max-width: 60%;
+  align-items: center;
+  position: relative;
+  z-index: 25;
+  margin-bottom: 95px;
+}
+
+#loftRestaurant .bg-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 20;
+}
+
+#loftRestaurant .bg-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 20;
+}
+
+#loftRestaurant .bg-left img {
+  width: 29%;
+  height: auto;
+  position: absolute;
+  top: 0%;
+  left: 0;
+}
+
+#loftRestaurant .bg-right img {
+  width: 29%;
+  height: auto;
+  position: absolute;
+  top: 0%;
+  right: 0;
+}
+
+#loftRestaurant .crystal-zodiac-wrapper img {
+  width: calc(25% - 10px);
+}
+
+#loftRestaurant .crystal-chain {
+  position: absolute;
+  top: -30%;
+  height: 444px;
+  z-index: 15;
+}
+
+#loftRestaurant__bg-black-gradient {
+  height: 100%;
+}
+
+#pizza {
+  min-height: 100vH;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#pizza .bg-blue-stonewall {
+  background-image: url('../images/blue-wall.jpg');
+  background-size: cover;
+  background-position: bottom;
+  z-index: 10;
+}
+
+#pizza .bg-blue-stonewall, #pizza .bg-black-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#pizza .pizza-tagliere-wrapper {
+  position: relative;
+  z-index: 25;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#pizza #tagliere {
+  width: 51%;
+}
+
+#pizza #pizza-full {
+  position: absolute;
+  width: 50%;
+}

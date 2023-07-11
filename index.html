@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Areadocks</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="" />
+    <link rel="icon" href="favicon.png">
+
+    <link rel="stylesheet" href="assets/style/app.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
+
+  </head>
+  <body>
+    <div class="introAnimation-wrapper fullscreen">
+      <div class="black-bg" id="introAnimation-wrapper__black-bg"></div>
+      <div class="logo-container">
+        <img src="assets/images/logo.png" alt="" class="logo" id="introAnimation-wrapper__logo">
+      </div>
+    </div>
+    <div class="hero fullscreen" id="hero">
+      <div class="bg-first fullscreen" id="hero__bg-first"></div>
+      <div class="bg-black-gradient fullscreen" id="hero__bg-black-gradient"></div>
+      <div class="main-title" id="hero__main-title">
+        <h1 class="uppercase text-center">Areadocks</h1>
+      </div>
+      <div class="world fullscreen" id="hero__world">
+        <div class="fullscreen" id="hero__world__img-container">
+          <div class="zodiac-wrapper" id="zodiac-wrapper">
+            <img src="assets/images/cavalluccio.png" alt="" class="logo" id="zodiac-wrapper__img">
+            <img src="assets/images/ali.png" alt="" class="logo" id="zodiac-wrapper__img">
+            <img src="assets/images/paperelle.png" alt="" class="logo" id="zodiac-wrapper__img">
+            <img src="assets/images/fulmine.png" alt="" class="logo" id="zodiac-wrapper__img">
+          </div>
+          <img src="assets/images/world.png" alt="" class="world" id="hero__world__img">
+        </div>
+      </div>
+    </div>
+    <div class="scrollSectionsAfterHero" id="scrollSectionsAfterHero">
+      <div class="leaves" id="leaves">
+        <div class="leaves-bg"></div>
+        <img src="assets/images/leaft-left-1.png" alt="" class="leaf leaves__img">
+        <img src="assets/images/leaft-left-2.png" alt="" class="leaf leaves__img">
+        <img src="assets/images/leaft-left-3.png" alt="" class="leaf leaves__img">
+        <img src="assets/images/leaft-center-1.png" alt="" class="leaf leaves__img">
+        <img src="assets/images/leaft-right-1.png" alt="" class="leaf leaves__img">
+        <img src="assets/images/leaft-right-2.png" alt="" class="leaf leaves__img">
+        <img src="assets/images/leaft-right-3.png" alt="" class="leaf leaves__img">
+        <img src="assets/images/leaft-right-3.png" alt="" class="leaf leaves__img ghost_fixer">
+      </div>
+
+      <div class="loftRestaurant" id="loftRestaurant">
+        <div class="bg-black-gradient fullscreen" id="loftRestaurant__bg-black-gradient"></div>
+        <div class="crystal-chain">
+          <img src="assets/images/crystyal-chain.png" alt="" class="crystal-chain__img">
+        </div>
+        <div class="bg-left">
+          <div style="position: relative">
+            <img src="assets/images/2nd-leaves-left.png" alt="" class="loftRestaurant__leaves">
+          </div>
+        </div>
+        <div class="bg-right">
+          <div style="position: relative">
+            <img src="assets/images/2nd-leaves-right.png" alt="" class="loftRestaurant__leaves">
+          </div>
+        </div>
+        <div class="crystal-wrapper">
+          <img src="assets/images/crystyal.png" alt="" class="crystal">
+        </div>
+        <h2>Loft Restaurant</h2>
+        <div class="crystal-zodiac-wrapper">
+          <img src="assets/images/cavalluccio.png" alt="" class="logo" id="crystal-zodiac-wrapper__img">
+          <img src="assets/images/ali.png" alt="" class="logo" id="crystal-zodiac-wrapper__img">
+          <img src="assets/images/paperelle.png" alt="" class="logo" id="crystal-zodiac-wrapper__img">
+          <img src="assets/images/fulmine.png" alt="" class="logo" id="crystal-zodiac-wrapper__img">
+        </div>
+      </div>
+
+      <div class="pizza" id="pizza">
+        <div class="bg-stonewall bg-blue-stonewall"></div>
+        <div class="bg-black-gradient fullscreen" id="pizza__bg-black-gradient"></div>
+        <div class="pizza-tagliere-wrapper">
+          <img src="assets/images/tagliere-pizza.png" alt="" id="tagliere">
+          <img src="assets/images/pizza-full.png" alt="" id="pizza-full">
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <footer>
+    <script src="homeAnimations.js"></script>
+  </footer>
+</html>
