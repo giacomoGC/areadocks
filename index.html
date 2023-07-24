@@ -8,6 +8,7 @@
     <link rel="icon" href="favicon.png">
 
     <link rel="stylesheet" href="assets/style/app.css">
+    <link rel="stylesheet" href="assets/style/portrait_orientation.css">
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
@@ -15,79 +16,166 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
+    <script src="plugins/scrollSmoother.js"></script>
 
   </head>
   <body>
-    <div class="introAnimation-wrapper fullscreen">
-      <div class="black-bg" id="introAnimation-wrapper__black-bg"></div>
-      <div class="logo-container">
-        <img src="assets/images/logo.png" alt="" class="logo" id="introAnimation-wrapper__logo">
-      </div>
-    </div>
-    <div class="hero fullscreen" id="hero">
-      <div class="bg-first fullscreen" id="hero__bg-first"></div>
-      <div class="bg-black-gradient fullscreen" id="hero__bg-black-gradient"></div>
-      <div class="main-title" id="hero__main-title">
-        <h1 class="uppercase text-center">Areadocks</h1>
-      </div>
-      <div class="world fullscreen" id="hero__world">
-        <div class="fullscreen" id="hero__world__img-container">
-          <div class="zodiac-wrapper" id="zodiac-wrapper">
-            <img src="assets/images/cavalluccio.png" alt="" class="logo" id="zodiac-wrapper__img">
-            <img src="assets/images/ali.png" alt="" class="logo" id="zodiac-wrapper__img">
-            <img src="assets/images/paperelle.png" alt="" class="logo" id="zodiac-wrapper__img">
-            <img src="assets/images/fulmine.png" alt="" class="logo" id="zodiac-wrapper__img">
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <div class="introAnimation-wrapper fullscreen">
+          <div class="black-bg" id="introAnimation-wrapper__black-bg"></div>
+          <div class="logo-container">
+            <img src="assets/images/logo.png" alt="" class="logo" id="introAnimation-wrapper__logo">
           </div>
-          <img src="assets/images/world.png" alt="" class="world" id="hero__world__img">
         </div>
-      </div>
-    </div>
-    <div class="scrollSectionsAfterHero" id="scrollSectionsAfterHero">
-      <div class="leaves" id="leaves">
-        <div class="leaves-bg"></div>
-        <img src="assets/images/leaft-left-1.png" alt="" class="leaf leaves__img">
-        <img src="assets/images/leaft-left-2.png" alt="" class="leaf leaves__img">
-        <img src="assets/images/leaft-left-3.png" alt="" class="leaf leaves__img">
-        <img src="assets/images/leaft-center-1.png" alt="" class="leaf leaves__img">
-        <img src="assets/images/leaft-right-1.png" alt="" class="leaf leaves__img">
-        <img src="assets/images/leaft-right-2.png" alt="" class="leaf leaves__img">
-        <img src="assets/images/leaft-right-3.png" alt="" class="leaf leaves__img">
-        <img src="assets/images/leaft-right-3.png" alt="" class="leaf leaves__img ghost_fixer">
-      </div>
+        <section class="hero fullscreen" id="hero">
+          <div class="bg-first fullscreen" id="hero__bg-first"></div>
+          <div class="bg-black-gradient fullscreen" id="hero__bg-black-gradient"></div>
+          <div class="main-title" id="hero__main-title">
+            <h1 class="uppercase text-center">Areadocks</h1>
+          </div>
+          <div class="world fullscreen" id="hero__world">
+            <div class="fullscreen" id="hero__world__img-container">
+              <div class="zodiac-wrapper" id="zodiac-wrapper">
+                <img src="assets/images/cavalluccio.png" alt="" class="logo" id="zodiac-wrapper__img">
+                <img src="assets/images/ali.png" alt="" class="logo" id="zodiac-wrapper__img">
+                <img src="assets/images/paperelle.png" alt="" class="logo" id="zodiac-wrapper__img">
+                <img src="assets/images/fulmine.png" alt="" class="logo" id="zodiac-wrapper__img">
+              </div>
+              <img src="assets/images/world.png" alt="" class="world" id="hero__world__img">
+            </div>
+          </div>
+        </section>
+        <div class="scrollSectionsAfterHero" id="scrollSectionsAfterHero">
+          <!-- <section class="loftRestaurant" id="loftRestaurant">
+            <div id="loftRestaurant__stonewall-bg"></div>
+            <div class="leaves" id="leaves">
+              <div class="leaves-bg"></div>
+              <img src="assets/images/leaft-left-1.png" alt="" class="leaf leaves__img">
+              <img src="assets/images/leaft-left-2.png" alt="" class="leaf leaves__img">
+              <img src="assets/images/leaft-left-3.png" alt="" class="leaf leaves__img">
+              <img src="assets/images/leaft-center-1.png" alt="" class="leaf leaves__img">
+              <img src="assets/images/leaft-right-1.png" alt="" class="leaf leaves__img">
+              <img src="assets/images/leaft-right-2.png" alt="" class="leaf leaves__img">
+              <img src="assets/images/leaft-right-3.png" alt="" class="leaf leaves__img">
+              <img src="assets/images/leaft-right-3.png" alt="" class="leaf leaves__img ghost_fixer">
+            </div>
+            <div id="knifeandhat">
+              <img src="assets/images/knife.png" alt="" class="knife">
+              <img src="assets/images/chef-hat.png" alt="" class="hat">
+            </div>
+            <div class="loftRestaurant__container">
+              <div class="bg-black-gradient fullscreen" id="loftRestaurant__bg-black-gradient"></div>
+              <div class="bg-left">
+                <div style="position: relative">
+                  <img src="assets/images/2nd-leaves-left.png" alt="" class="loftRestaurant__leaves">
+                </div>
+              </div>
+              <div class="bg-right">
+                <div style="position: relative">
+                  <img src="assets/images/2nd-leaves-right.png" alt="" class="loftRestaurant__leaves">
+                </div>
+              </div>
+              <div class="crystal-wrapper">
+                <img src="assets/images/crystal-full.png" alt="" class="crystal crystal-main-img">
+              </div>
+              <h2>Loft Restaurant</h2>
+              <div class="crystal-zodiac-wrapper">
+                <div>
+                  <img src="assets/images/cavalluccio_giallo.png" alt="" class="crystal-zodiac-wrapper__main-img" id="">
+                  <img src="assets/images/cavalluccio_giallo_noglow.png" alt="" class="crystal-zodiac-wrapper__img crystal-zodiac-wrapper__noglow-img" id="">
+                </div>
+                <div>
+                  <img src="assets/images/ali_giallo.png" alt="" class="crystal-zodiac-wrapper__main-img" id="">
+                  <img src="assets/images/ali_giallo_noglow.png" alt="" class="crystal-zodiac-wrapper__img crystal-zodiac-wrapper__noglow-img" id="">
+                </div>
+                <div>
+                  <img src="assets/images/paperelle_giallo.png" alt="" class="crystal-zodiac-wrapper__main-img" id="">
+                  <img src="assets/images/paperelle_giallo_noglow.png" alt="" class="crystal-zodiac-wrapper__img crystal-zodiac-wrapper__noglow-img" id="">
+                </div>
+                <div>
+                  <img src="assets/images/fulmine_giallo.png" alt="" class="crystal-zodiac-wrapper__img crystal-zodiac-wrapper__main-img" id="">
+                  <img src="assets/images/fulmine_giallo_noglow.png" alt="" class="crystal-zodiac-wrapper__img crystal-zodiac-wrapper__noglow-img" id="crystal-zodiac-wrapper__img crystal-zodiac-wrapper__noglow-img">
+                </div>
+              </div>
+            </div>
+          </section>
+    
+          <section class="pizza" id="pizza">
+            <div class="bg-stonewall bg-blue-stonewall"></div>
+            <div class="bg-black-gradient fullscreen" id="pizza__bg-black-gradient"></div>
+            <div class="pizza-tagliere-wrapper">
+              <img src="assets/images/tagliere-pizza.png" alt="" id="tagliere">
+              <img src="assets/images/pizza-full.png" alt="" id="pizza-full">
+              <div class="pizza-slices">
+                <img src="assets/images/pizza-slice_1.png" id="pizza-slice_1" class="pizza-slice">
+                <img src="assets/images/pizza-slice_2.png" id="pizza-slice_2" class="pizza-slice">
+                <img src="assets/images/pizza-slice_3.png" id="pizza-slice_3" class="pizza-slice">
+                <img src="assets/images/pizza-slice_4.png" id="pizza-slice_4" class="pizza-slice">
+                <img src="assets/images/pizza-slice_5.png" id="pizza-slice_5" class="pizza-slice">
+                <img src="assets/images/pizza-slice_6.png" id="pizza-slice_6" class="pizza-slice">
+              </div>
+              <div class="chef-hat pizza-chef-hat">
+                <img src="assets/images/north-chef-hat.png" alt="" class="pizza-cheft-hat__img" id="pizza-cheft-hat__img">
+              </div>
+            </div>
+          </section>
 
-      <div class="loftRestaurant" id="loftRestaurant">
-        <div class="bg-black-gradient fullscreen" id="loftRestaurant__bg-black-gradient"></div>
-        <div class="crystal-chain">
-          <img src="assets/images/crystyal-chain.png" alt="" class="crystal-chain__img">
-        </div>
-        <div class="bg-left">
-          <div style="position: relative">
-            <img src="assets/images/2nd-leaves-left.png" alt="" class="loftRestaurant__leaves">
+         <div class="ventagli-oriental__wrapper" id="ventagli-oriental__wrapper">
+            <div class="cactus pizza-cactus">
+              <img src="assets/images/cactus.png" alt="" class="pizza-cactus__img" id="cactus__img">
+            </div>
+            <div class="ventagli-oriental__bg-black-gradient-top" id="ventagli-oriental__bg-black-gradient-top"></div>
+            <section class="ventagli" id="ventagli">
+              <img src="assets/images/ventaglio_1.png" alt="" class="ventaglio_1" id="ventaglio_1">
+              <img src="assets/images/ventaglio_2.png" alt="" class="ventaglio_2" id="ventaglio_2">
+              <img src="assets/images/parasol_1.png" alt="" class="parasol_1" id="parasol_1">
+              <img src="assets/images/parasol_2.png" alt="" class="parasol_2" id="parasol_2">
+              <img src="assets/images/parasol_3.png" alt="" class="parasol_3" id="parasol_3">
+            </section>
+            <section class="oriental" id="oriental">
+              <img src="assets/images/samurai-mask.png" alt="" class="samurai-mask" id="samurai-mask">
+              <img src="assets/images/umbrella.png" alt="" class="umbrella" id="umbrella">
+              <img src="assets/images/north-bottom-right-fan.png" alt="" class="north-bottom-right-fan" id="north-bottom-right-fan">
+            </section>
+          </div>  -->
+          <div class="secondaclasse__wrapper" id="secondaclasse__wrapper">
+            <div class="secondaclasse__wrapper__bg-black-gradient-top" id="secondaclasse__wrapper__bg-black-gradient-top"></div> -->
+            <section class="secondaclasse__railway" id="secondaclasse__railway">
+              <img src="assets/images/railway.png" alt="" class="railway" id="railway">
+              <img src="assets/images/bistecca-left.png" alt="" class="bistecca-left" id="bistecca-left">
+              <img src="assets/images/bistecca-topright.png" alt="" class="bistecca-topright" id="bistecca-topright">
+            </section>
+            <section class="secondaclasse__main" id="secondaclasse__main">
+              <img src="assets/images/guitar.png" alt="" class="guitar" id="guitar">
+              <img src="assets/images/batteria.png" alt="" class="batteria" id="batteria">
+              <img src="assets/images/bistecca-bottomright.png" alt="" class="bistecca-bottomright" id="bistecca-bottomright">
+              <img src="assets/images/train.png" alt="" class="train" id="train">
+              <img src="assets/images/secondaclasse-railway.png" alt="" class="secondaclasse-railway" id="secondaclasse-railway">
+            </section>
           </div>
-        </div>
-        <div class="bg-right">
-          <div style="position: relative">
-            <img src="assets/images/2nd-leaves-right.png" alt="" class="loftRestaurant__leaves">
-          </div>
-        </div>
-        <div class="crystal-wrapper">
-          <img src="assets/images/crystyal.png" alt="" class="crystal">
-        </div>
-        <h2>Loft Restaurant</h2>
-        <div class="crystal-zodiac-wrapper">
-          <img src="assets/images/cavalluccio.png" alt="" class="logo" id="crystal-zodiac-wrapper__img">
-          <img src="assets/images/ali.png" alt="" class="logo" id="crystal-zodiac-wrapper__img">
-          <img src="assets/images/paperelle.png" alt="" class="logo" id="crystal-zodiac-wrapper__img">
-          <img src="assets/images/fulmine.png" alt="" class="logo" id="crystal-zodiac-wrapper__img">
-        </div>
-      </div>
+          <div class="boutique__wrapper" id="boutique__wrapper">
+            <section class="roses" id="roses">
+              <div class="roses-black-bg" id="roses-black-bg"></div>
+              <div class="rosesAndHorses" id="rosesAndHorses">
+                <img src="assets/images/rosa-left.png" alt="" class="rosa-left" id="rosa-left">
+                <img src="assets/images/rosa-right.png" alt="" class="rosa-right" id="rosa-right">
+              </div>
+            </section>
+            <section class="boutique-hotel" id="boutique-hotel">
+              <img src="assets/images/hotel_spento.png" alt="" class="hotel_spento" id="hotel_spento">
+              <img src="assets/images/hotel_acceso.png" alt="" class="hotel_acceso" id="hotel_acceso">
+              <div class="boutique-hotel__paperelle">
+                <img src="assets/images/paperella_sx.png" alt="" class="paperella_sx" id="paperella_sx">
+                <img src="assets/images/paperella_dx.png" alt="" class="paperella_dx" id="paperella_dx">
+              </div>
+              <img src="assets/images/horse_2.png" alt="" class="horse_2" id="horse_2">
+              <img src="assets/images/horse_1.png" alt="" class="horse_1" id="horse_1">
+            </section>
+            <section class="pasticceria-gelateria" id="pasticceria-gelateria">
 
-      <div class="pizza" id="pizza">
-        <div class="bg-stonewall bg-blue-stonewall"></div>
-        <div class="bg-black-gradient fullscreen" id="pizza__bg-black-gradient"></div>
-        <div class="pizza-tagliere-wrapper">
-          <img src="assets/images/tagliere-pizza.png" alt="" id="tagliere">
-          <img src="assets/images/pizza-full.png" alt="" id="pizza-full">
+            </section>
+          </div>
         </div>
       </div>
     </div>

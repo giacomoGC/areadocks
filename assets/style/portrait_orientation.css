@@ -1,0 +1,150 @@
+@media (orientation: landscape) {
+
+}
+
+@media (orientation: portrait) {
+  #leaves .leaves__img:nth-child(2) {
+    width: auto;
+    height: 65%;
+    left: -3%;
+    position: relative;
+  }
+  
+  #leaves .leaves__img:nth-child(3) {
+    width: auto;
+    height: 50%;
+    bottom: 0;
+    left: -5%;
+    z-index: 20;
+  }
+  
+  #leaves .leaves__img:nth-child(4) {
+    width: auto;
+    height: 75%;
+    z-index: 25;
+    left: 0;
+    top: -2%;
+    transform-origin: top left;
+  }
+  
+  #leaves .leaves__img:nth-child(5) {
+    right: 17%;
+    width: auto;
+    height: 50%;
+    z-index: 20;
+    transform-origin: left;
+  }
+  
+  #leaves .leaves__img:nth-child(6) {
+    right: 0;
+    width: auto;
+    height: 55%;
+    transform-origin: top right;
+  }
+  
+  #leaves .leaves__img:nth-child(7) {
+    right: 0;
+    width: auto;
+    height: 45%;
+    transform-origin: right;
+  }
+  
+  #leaves .leaves__img:nth-child(8) {
+    right: 0;
+    width: auto;
+    height: 55%;
+    bottom: 0;
+    z-index: 20;
+    transform-origin: right;
+  }
+  #loftRestaurant #knifeandhat .knife {
+    width: 82%;
+    margin-left: 45%;
+  }
+  #loftRestaurant #knifeandhat .hat {
+    width: 66%;
+    margin-left: 0;
+    top: 17%;
+  }
+  #pizza .pizza-chef-hat {
+    position: absolute;
+    right: -16%;
+    top: -46%;
+    width: 50%;
+  }
+  #pizza #tagliere {
+    width: 76%;
+  }
+  #pizza #pizza-full {
+    width: 75%;
+  }
+  #pizza .pizza-slices {
+    width: 71%;
+  }
+  #ventaglio_1 {
+    right: 0;
+    height: 67%;
+    top: 13%;
+  }
+  #ventaglio_2 {
+    right: -3%;
+    height: 66%;
+    top: 5%;
+    max-width: 108%;
+    object-fit: contain;
+  }
+  #parasol_1 {
+    height: 95%;
+    left: -16%;
+    bottom: -21%;
+    max-width: 93%;
+  }
+  #parasol_2 {
+    left: 6%;
+    height: 95%;
+    bottom: -2%;
+    max-width: 96%;
+  }
+  #parasol_3 {
+    left: -33%;
+    height: 100%;
+    top: -11%;
+    max-width: 101%;
+  }
+  #samurai-mask {
+    height: auto;
+    position: absolute;
+    left: -41%;
+    bottom: -17%;
+    width: 100%;
+  }
+  #umbrella {
+    height: 43%;
+    position: absolute;
+    right: -9%;
+    top: 20%;
+  }
+  #north-bottom-right-fan {
+    height: auto;
+    position: absolute;
+    right: -44%;
+    bottom: -21%;
+    width: 100%;
+  }
+  #secondaclasse__railway #bistecca-left {
+    width: 77%;
+    left: -21%;
+    bottom: -70vW;
+    height: auto;
+  }
+  #batteria {
+    height: auto;
+    width: 84%;
+  }
+  #bistecca-bottomright {
+    height: auto;
+    top: 0;
+    right: -18vH;
+    width: 78%;
+  }
+}

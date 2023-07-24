@@ -2,6 +2,7 @@ body {
   margin: 0;
   pointer-events: none;
   touch-action: none;
+  background-color: black;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -23,6 +24,12 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
+.scrollSpacer_c {
+  width: 100%;
+  display: block;
+  height: 20px;
+}
+
 .black-bg {
   height: 100%;
   background-color: black;
@@ -32,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 70;
 }
 
 .introAnimation-wrapper .logo-container {
@@ -55,6 +62,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   padding-right: 15px;
   width: calc(100% - 15px);
+  z-index: 60;
 }
 
 #hero, #hero__world__img-container {
@@ -139,14 +147,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #leaves {
-  position: relative;
-  background-image: url('../../assets/images/stonewall.jpg');
-  background-size: cover;
   overflow-x: clip;
   overflow-y: visible;
   min-height: auto;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  position: absolute;
+  padding-top: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 45;
 }
 
 #leaves .leaves-bg {
@@ -157,6 +167,8 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   background-color: rgb(0 0 0 / 100%);
   z-index: 10;
+
+  display: none;
 }
 
 #leaves .leaves__img {
@@ -219,14 +231,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #loftRestaurant {
-  background-image: url('../../assets/images/stonewall.jpg');
-  background-size: cover;
-  min-height: 100vH;
+  min-height: 101vH;
+  overflow-y: visible;
   position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start !important;
-  padding-top: 45px;;
+}
+
+#loftRestaurant__stonewall-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background-image: url(../../assets/images/stonewall.jpg);
+  background-size: cover;
+}
+
+.loftRestaurant__container {
+  width: 100%;
+  height: 100vH;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 #loftRestaurant, #loftRestaurant .crystal-wrapper, #loftRestaurant .crystal-zodiac-wrapper {
@@ -235,26 +265,63 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #loftRestaurant .crystal-wrapper {
-  max-width: 400px;
-  margin-top: 5%;
+  height: 50%;
   position: relative;
   z-index: 25;
+}
+
+#loftRestaurant .crystal-wrapper img:not(.crystal-ghost-fixer) {
+  position: relative;
+  height: auto;
+  top: 0;
+  width: auto;
+  height: 100%;
+}
+
+#loftRestaurant .crystal-wrapper .crystal-ghost-fixer {
+  position: relative;
+  top: 100px;
+  opacity: 0;
 }
 
 #loftRestaurant h2 {
   text-align: center;
   margin-top: 55px;
-  margin-bottom: 75px;
+  margin-bottom: 50px;
   position: relative;
-  z-index: 25;
+  z-index: 35;
 }
 
+#loftRestaurant #knifeandhat {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+#loftRestaurant #knifeandhat .knife {
+  width: 33%;
+  position: relative;
+  margin-left: 62%;
+  top: 20%;
+}
+
+#loftRestaurant #knifeandhat .hat {
+  width: 33%;
+  position: relative;
+  margin-left: 9%;
+  top: 14%;
+}
+
+
 #loftRestaurant .crystal-zodiac-wrapper {
-  max-width: 60%;
+  max-width: 65%;
   align-items: center;
   position: relative;
-  z-index: 25;
-  margin-bottom: 95px;
+  z-index: 30;
+  width: 100%;
 }
 
 #loftRestaurant .bg-left {
@@ -270,40 +337,63 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 0;
   right: 0;
-  height: 100%;
+  height: 110%;
   width: 100%;
   z-index: 20;
 }
 
+#loftRestaurant .bg-right > div, #loftRestaurant .bg-left > div {
+  height: 100%;
+}
+
 #loftRestaurant .bg-left img {
-  width: 29%;
-  height: auto;
+  height: 97%;
   position: absolute;
   top: 0%;
   left: 0;
+  max-width: 46%;
+  object-fit: cover;
+  object-position: right;
 }
 
 #loftRestaurant .bg-right img {
-  width: 29%;
-  height: auto;
+  height: 97%;
   position: absolute;
   top: 0%;
   right: 0;
+  max-width: 46%;
+  object-fit: cover;
+  object-position: left;
 }
 
 #loftRestaurant .crystal-zodiac-wrapper img {
-  width: calc(25% - 10px);
+  width: 100%;
 }
 
 #loftRestaurant .crystal-chain {
-  position: absolute;
-  top: -30%;
-  height: 444px;
   z-index: 15;
 }
 
 #loftRestaurant__bg-black-gradient {
   height: 100%;
+}
+
+#loftRestaurant .crystal-zodiac-wrapper > div {
+  position: relative;
+  padding: 10px;
+}
+
+#loftRestaurant .crystal-zodiac-wrapper .crystal-zodiac-wrapper__main-img {
+  opacity: 0;
+}
+
+#loftRestaurant .crystal-zodiac-wrapper .crystal-zodiac-wrapper__noglow-img {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  /* padding: 10px; */
+  width: calc(100% - 20px);
+  opacity: 0;
 }
 
 #pizza {
@@ -312,6 +402,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   position: relative;
+  z-index: 4;
 }
 
 #pizza .bg-blue-stonewall {
@@ -341,9 +432,334 @@ h1, h2, h3, h4, h5, h6 {
 
 #pizza #tagliere {
   width: 51%;
+  max-width: 800px;
 }
 
 #pizza #pizza-full {
   position: absolute;
   width: 50%;
+  max-width: 800px;
+  opacity: 0;
+}
+
+#pizza .pizza-slices {
+  position: absolute;
+  width: 50%;
+  max-width: 800px;
+  top: 0;
+}
+
+#pizza .pizza-slice {
+  width: 100%;
+  position: absolute;
+}
+
+#pizza .pizza-chef-hat {
+  position: absolute;
+  right: 3%;
+  top: 3%;
+  width: 30%;
+}
+
+.pizza-cactus img {
+  position: absolute;
+  left: 3%;
+  top: -26%;
+  height: 50%;
+  z-index: 27;
+  object-fit: contain;
+  max-width: 60%;
+}
+
+#pizza .pizza-chef-hat__img {
+
+}
+
+#pizza .pizza-cactus__img {
+  
+}
+
+#ventagli-oriental__wrapper {
+  position: relative;
+  background-image: url('../images/oriental-bg.jpg');
+  background-size: cover;
+  background-position: bottom center;
+  z-index: 20;
+}
+
+#ventagli, #oriental {
+  height: 101vH;
+  width: 100%;
+  overflow: visible;
+  position: relative;
+  display: flex;
+  z-index: 30;
+}
+
+#ventagli img {
+  position: absolute;
+}
+
+#ventagli-oriental__bg-black-gradient-top, #secondaclasse__wrapper__bg-black-gradient-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 17%;
+  z-index: 15;
+  background: linear-gradient(to bottom, black 10%, transparent);
+  z-index: 25;
+}
+
+#secondaclasse__wrapper__bg-black-gradient-top {
+  background: linear-gradient(to bottom, transparent, rgb(0 0 0 / 91%) 49%, transparent);
+  top: -8.5%;
+}
+
+#ventaglio_1 {
+  right: 0%;
+  height: 100%;
+  transform-origin: right;
+}
+
+#ventaglio_2 {
+  right: 12%;
+  height: 116%;
+  top: 5%;
+}
+
+#parasol_1 {
+  left: -1%;
+  height: 64%;
+  bottom: -21%;
+  max-width: 40%;
+  object-fit: contain;
+}
+
+#parasol_2 {
+  left: 13%;
+  height: 87%;
+  bottom: -2%;
+  max-width: 50%;
+  object-fit: contain;
+}
+
+#parasol_3 {
+  left: -20%;
+  height: 97%;
+  top: 0%;
+  max-width: 73%;
+  object-fit: contain;
+}
+
+#parasol_1, #parasol_2, #parasol_3 {
+
+}
+
+#samurai-mask {
+  height: 99%;
+  position: absolute;
+  left: -16%;
+  bottom: -24%;
+}
+
+#umbrella {
+  height: 58%;
+  position: absolute;
+  right: 11%;
+  top: 20%;
+}
+
+#north-bottom-right-fan {
+  height: 99%;
+  position: absolute;
+  right: -19%;
+  bottom: -53%;
+}
+
+#secondaclasse__wrapper {
+  background-image: url('../images/secondaclasse-bg.jpg');
+  background-size: cover;
+  background-position: top center;
+  position: relative;
+}
+
+#secondaclasse__railway, #secondaclasse__main {
+  height: 100vH;
+  width: 100%;
+  overflow: visible;
+  position: relative;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+}
+
+#secondaclasse__railway #bistecca-left {
+  position: absolute;
+  width: 30%;
+  left: -3%;
+  bottom: -25vW;
+  transform: translateY(-50%);
+  max-width: 600px;
+  height: auto;
+}
+
+#secondaclasse__railway #bistecca-topright {
+  position: absolute;
+  bottom: 10vH;
+  width: 85%;
+  right: -25%;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 925px;
+}
+
+#secondaclasse__railway #railway {
+  width: 100%;
+}
+
+#guitar {
+  position: absolute;
+  height: 40%;
+  top: 5vH;
+  left: 7%;
+}
+
+#batteria {
+  position: absolute;
+  height: 46%;
+  bottom: 0;
+  left: 4%;
+}
+
+#bistecca-bottomright {
+  position: absolute;
+  height: 46%;
+  top: 0;
+  right: -18vH;
+}
+
+#train {
+  position: absolute;
+  bottom: 0;
+  right: -700%;
+  height: 60%;
+}
+
+#secondaclasse-railway {
+  position: absolute;
+  bottom: -1%;
+  left: 0;
+  width: 100%;
+}
+
+#train {
+  position: absolute;
+  bottom: -1%;
+  right: -43%;
+  height: 77%;
+}
+
+#boutique__wrapper {
+  background-image: url('../images/boutique-hotel-bg.jpg');
+  background-size: cover;
+}
+
+#roses, #boutique-hotel {
+  height: 100vH;
+  width: 100%;
+  overflow: visible;
+  position: relative;
+  z-index: 25;
+}
+
+#roses {
+  z-index: 30;
+}
+
+#roses #roses-black-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, black 90%, transparent);
+}
+
+#rosesAndHorses {
+  height: 100%;
+}
+
+#rosesAndHorses #rosa-left {
+  position: absolute;
+  left: -17vH;
+  top: 0;
+  height: 110%;
+  width: auto;
+  z-index: 25;
+}
+
+#rosesAndHorses #rosa-right {
+  position: absolute;
+  right: -17vH;
+  top: 0;
+  height: 110%;
+  width: auto;
+  z-index: 25;
+}
+
+#boutique-hotel {
+ 
+}
+
+#boutique-hotel #horse_1 {
+  position: absolute;
+  left: 13%;
+  top: -35%;
+  height: 100%;
+  width: auto;
+  z-index: 20;
+}
+
+#boutique-hotel #horse_2 {
+  position: absolute;
+  right: 15%;
+  top: -35%;
+  height: 100%;
+  width: auto;
+  z-index: 20;
+}
+
+#hotel_spento, #hotel_acceso {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -15vH;
+  height: 100%;
+}
+
+#hotel_acceso {
+  opacity: 0;
+}
+
+.boutique-hotel__paperelle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.boutique-hotel__paperelle #paperella_sx {
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  height: 30%;
+}
+
+.boutique-hotel__paperelle #paperella_dx {
+  position: absolute;
+  bottom: 7%;
+  right: 17vH;
+  height: 30%;
 }
