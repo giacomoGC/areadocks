@@ -114,7 +114,8 @@ function goToSection(i, anim) {
 
     gsap.to(window, {
       scrollTo: {y: i*innerHeight + firstElem.offsetTop, autoKill: false},
-      duration: 1,
+      duration: 2,
+      ease: Power4.EaseOut,
       onStart: scrolling.disable(),
       onComplete: function() {
         scrolling.enable();
@@ -278,7 +279,7 @@ let rosesTl = gsap.timeline({
   scrollTrigger: {
       trigger:'#rosesAndHorses',
       start:"bottom bottom-=10px",
-      end: '+=100%',
+      // end: '+=100%',
       scrub: false,
       pin: false,
       // pinSpacer: false,
@@ -298,29 +299,55 @@ rosesTl.to('#rosa-left', {top: "40%", duration: 2})
 rosesTl.to('#rosa-left', {rotate: "-=90", duration: 2}, '<')
 rosesTl.to('#rosa-right', {top: "40%", duration: 2}, '<')
 rosesTl.to('#rosa-right', {rotate: "+=90", duration: 2}, '<')
-rosesTl.to('#rosa-left', {top: "7%", duration: 1})
-rosesTl.to('#rosa-right', {top: "7%", duration: 1}, '<')
-rosesTl.to('#horse_2', {top: "-70%", duration: 2, ease: Power4.easeOut}, '<')
-rosesTl.to('#horse_1', {top: "-70%", duration: 2, ease: Power4.easeOut}, '<')
+rosesTl.to('#rosa-left', {top: "7%", duration: 1, ease: Power4.easeInOut})
+rosesTl.to('#rosa-right', {top: "7%", duration: 1, ease: Power4.easeInOut}, '<')
+rosesTl.to('#horse_2', {top: "-70%", duration: 1, ease: Power4.easeInOut}, '<')
+rosesTl.to('#horse_1', {top: "-70%", duration: 1, ease: Power4.easeInOut}, '<')
 
-rosesTl.to('#paperella_sx', {bottom: "10%", duration: 2.2, ease: Power4.easeOut}, '<')
-rosesTl.to('#paperella_dx', {bottom: "13%", duration: 2.2, ease: Power4.easeOut}, '<')
+rosesTl.to('#paperella_sx', {bottom: "10%", duration: 1, ease: Power4.easeInOut}, '<')
+rosesTl.to('#paperella_dx', {bottom: "13%", duration: 1, ease: Power4.easeInOut}, '<')
 
 rosesTl.add(function() {
-  horseLeftTl.to('#horse_2', {y: "-=30", duration: 2, ease: Sine.easeInOut})
-  horseLeftTl.to('#horse_2', {y: "+=30", duration: 2, ease: Sine.easeInOut})
+  horseLeftTl.to('#horse_2', {top: "+=15", duration: 2, ease: Sine.easeInOut})
+  horseLeftTl.to('#horse_2', {top: "-=15", duration: 2, ease: Sine.easeInOut})
   
-  horseRightTl.to('#horse_1', {y: "-=15", duration: 2, ease: Sine.easeInOut})
   horseRightTl.to('#horse_1', {y: "+=15", duration: 2, ease: Sine.easeInOut})
-}, '<')
+  horseRightTl.to('#horse_1', {y: "-=15", duration: 2, ease: Sine.easeInOut})
+}, ">+=1.4")
 
 rosesTl.add(function() {
-  paperellaLeftTl.to('#paperella_sx', {y: "-=30", rotate: `-=0.2`, duration: 2, ease: Sine.easeInOut})
-  paperellaLeftTl.to('#paperella_sx', {y: "+=30", rotate: `+=0.2`, duration: 2, ease: Sine.easeInOut})
+  paperellaLeftTl.to('#paperella_sx', {y: "+=30", rotate: `-=0.2`, duration: 2, ease: Sine.easeInOut})
+  paperellaLeftTl.to('#paperella_sx', {y: "-=30", rotate: `+=0.2`, duration: 2, ease: Sine.easeInOut})
   
-  paperellaRightTl.to('#paperella_dx', {y: "-=20", rotate: `-=0.4`, duration: 2, ease: Sine.easeInOut})
-  paperellaRightTl.to('#paperella_dx', {y: "+=20", rotate: `+=0.4`, duration: 2, ease: Sine.easeInOut})
-}, '<')
-
+  paperellaRightTl.to('#paperella_dx', {y: "+=20", rotate: `-=0.4`, duration: 2, ease: Sine.easeInOut})
+  paperellaRightTl.to('#paperella_dx', {y: "-=20", rotate: `+=0.4`, duration: 2, ease: Sine.easeInOut})
+}, ">")
 
 rosesTl.to('#hotel_acceso', {opacity: 1, duration: 2.2, ease: Elastic.easeIn.config(2, 0.3)})
+
+let boutiqueHotelTl = gsap.timeline({
+  scrollTrigger: {
+      trigger:'#pasticceria-gelateria',
+      start:"top bottom",
+      scrub: false,
+      pin: false,
+      // pinSpacer: false,
+      onEnterBack: function() {
+      },
+  },
+  onStart: function() {
+    horseLeftTl.pause()
+    horseRightTl.pause()
+    paperellaLeftTl.pause()
+    paperellaRightTl.pause()
+    console.log('tesss')
+  },
+  onComplete: function() {
+
+  }
+})
+
+boutiqueHotelTl.to('#horse_2', {top: "-64%", duration: 2.6, ease: Power4.easeOut})
+boutiqueHotelTl.to('#horse_1', {top: "-61%", duration: 2.6, ease: Power4.easeOut}, '<')
+boutiqueHotelTl.to('#paperella_sx', {bottom: "-5%", duration: 2.6, ease: Power4.easeOut}, '<')
+boutiqueHotelTl.to('#paperella_dx', {bottom: "-10%", duration: 2.6, ease: Power4.easeOut}, '<')
