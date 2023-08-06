@@ -58,6 +58,7 @@ introTimeline.add(function() {
 })
 
 introTimeline.to("#zodiac-wrapper", {duration: 1.5, delay: 0, ease: Power3.easeInOut, autoAlpha: 1, bottom: 0, scale: 1});
+introTimeline.to("#hero__luna__img", {duration: 1.5, delay: 0, ease: Power3.easeInOut, left: '5%'}, '<+=0.3');
 
 masterTimeline.add(introTimeline);
 
@@ -177,6 +178,33 @@ let leavesRevealTl = gsap.timeline({
   },
 })
 
+let loftRestaurantParallaxTl = gsap.timeline({
+  scrollTrigger: {
+      trigger:'#pizza',
+      start:"top bottom",
+      scrub: false,
+      pin: false,
+      // pinSpacer: false,
+      onEnter: function() {
+        loftRestaurantParallaxTl.play()
+      },
+      onLeaveBack: function() {
+        loftRestaurantParallaxTl.reverse()
+      }
+  },
+  // onStart: function() {
+
+  // },
+  // onComplete: function() {
+
+  // },
+  paused: true,
+})
+
+loftRestaurantParallaxTl.to('#knifeandhat', {top: "+=15%", duration: 2.6, ease: Power4.easeOut})
+loftRestaurantParallaxTl.to('#loftRestaurant h2', {top: "+=11%", duration: 2.6, ease: Power4.easeOut}, '<')
+loftRestaurantParallaxTl.to('.crystal-zodiac-wrapper', {top: "+=11%", duration: 2.6, ease: Power4.easeOut}, '<')
+
 // Pizza + North
 
 let stonewallBgTl = gsap.timeline({
@@ -236,6 +264,34 @@ pizzaTl.to('#pizza #tagliere', {x: "-115%", y: "-20%", scale: "1.3", duration: 2
 pizzaTl.fromTo('#pizza #pizza-cheft-hat__img', {x: "+=20", y: "+=5", opacity: 0}, {x: "0", y: "0", opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=0.3')
 pizzaTl.fromTo('#cactus__img', {y: "+=200", opacity: 0}, {y: "0", opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=0.3')
 
+// Pizza parallax
+
+let pizzaParallaxTl = gsap.timeline({
+  scrollTrigger: {
+      trigger:'#ventagli-oriental__wrapper',
+      start:"top bottom",
+      scrub: false,
+      pin: false,
+      // pinSpacer: false,
+      onEnter: function() {
+        pizzaParallaxTl.play()
+      },
+      onLeaveBack: function() {
+        pizzaParallaxTl.reverse()
+      }
+  },
+  // onStart: function() {
+
+  // },
+  // onComplete: function() {
+
+  // },
+  paused: true,
+})
+
+pizzaParallaxTl.to('.pizza-chef-hat', {top: "+=15%", duration: 2.6, ease: Power4.easeOut})
+pizzaParallaxTl.to('.pizza-slices', {top: "+=11%", duration: 2.6, ease: Power4.easeOut}, '<')
+
 // Ventagli
 
 let ventaglioOneTimeline = gsap.timeline({repeat: -1});
@@ -246,7 +302,28 @@ gsap.to("#parasol_1", {rotation: 360, duration: 4, ease: 'none', repeat: -1});
 gsap.to("#parasol_2", {rotation: -360, duration: 6, ease: 'none', repeat: -1});
 gsap.to("#parasol_3", {rotation: 360, duration: 8, ease: 'none', repeat: -1});
 
+let ventagliSlideOutTimeline = gsap.timeline({
+  scrollTrigger:{
+      trigger:'#oriental',
+      start:"top top+=10px",
+  },
+})
+
+ventagliSlideOutTimeline.to('#parasol_1', {x: "-160%", duration: 2.2, delay: 0.5, ease: Power4.easeIn})
+ventagliSlideOutTimeline.to('#parasol_2', {x: "-140%", duration: 1.9, ease: Power4.easeIn}, '<+=0.3')
+ventagliSlideOutTimeline.to('#parasol_3', {x: "-130%", duration: 1.6, ease: Power4.easeIn}, '<+=0.3')
+ventagliSlideOutTimeline.to('#ventagli-oriental__wrapper #cactus__img', {x: "-140%", duration: 1.36, ease: Power4.easeIn}, '<')
+
+ventagliSlideOutTimeline.to('#ventaglio_1', {x: "130%", duration: 2, delay: 0.3, ease: Power4.easeIn}, '<')
+ventagliSlideOutTimeline.to('#ventaglio_2', {x: "130%", duration: 2.2, ease: Power4.easeIn}, '<')
+
+let samuraiMaskTimeline = gsap.timeline({repeat: -1});
+
+samuraiMaskTimeline.to('#samurai-mask', {y: "-=30", rotate: `-=1`, duration: 2, ease: Sine.easeInOut})
+samuraiMaskTimeline.to('#samurai-mask', {y: "+=30", rotate: `+=1`, duration: 2, ease: Sine.easeInOut})
+
 // Seconda classe
+
 let guitarTimeline = gsap.timeline({repeat: -1});
 let bisteccaBottomRightTimeline = gsap.timeline({repeat: -1});
 
@@ -282,9 +359,11 @@ let rosesTl = gsap.timeline({
       // end: '+=100%',
       scrub: false,
       pin: false,
-      // pinSpacer: false,
+      onEnter: function() {
+        rosesTl.play()
+      },
       onEnterBack: function() {
-        console.log('onenterback')
+        //rosesTl.reverse()
       },
   },
   onStart: function() {
@@ -292,7 +371,8 @@ let rosesTl = gsap.timeline({
   },
   onComplete: function() {
 
-  }
+  },
+  paused: true
 })
 
 rosesTl.to('#rosa-left', {top: "40%", duration: 2})
@@ -308,20 +388,20 @@ rosesTl.to('#paperella_sx', {bottom: "10%", duration: 1, ease: Power4.easeInOut}
 rosesTl.to('#paperella_dx', {bottom: "13%", duration: 1, ease: Power4.easeInOut}, '<')
 
 rosesTl.add(function() {
-  horseLeftTl.to('#horse_2', {top: "+=15", duration: 2, ease: Sine.easeInOut})
-  horseLeftTl.to('#horse_2', {top: "-=15", duration: 2, ease: Sine.easeInOut})
+  horseLeftTl.to('#horse_2', {top: "+=3%", duration: 2, ease: Sine.easeInOut})
+  horseLeftTl.to('#horse_2', {top: "-=3%", duration: 2, ease: Sine.easeInOut})
   
-  horseRightTl.to('#horse_1', {y: "+=15", duration: 2, ease: Sine.easeInOut})
-  horseRightTl.to('#horse_1', {y: "-=15", duration: 2, ease: Sine.easeInOut})
-}, ">+=1.4")
+  horseRightTl.to('#horse_1', {top: "+=4%", duration: 2, ease: Sine.easeInOut})
+  horseRightTl.to('#horse_1', {top: "-=4%", duration: 2, ease: Sine.easeInOut})
+})
 
 rosesTl.add(function() {
-  paperellaLeftTl.to('#paperella_sx', {y: "+=30", rotate: `-=0.2`, duration: 2, ease: Sine.easeInOut})
-  paperellaLeftTl.to('#paperella_sx', {y: "-=30", rotate: `+=0.2`, duration: 2, ease: Sine.easeInOut})
+  paperellaLeftTl.to('#paperella_sx', {bottom: "-=3%", rotate: `-=0.2`, duration: 2, ease: Sine.easeInOut})
+  paperellaLeftTl.to('#paperella_sx', {bottom: "+=3%", rotate: `+=0.2`, duration: 2, ease: Sine.easeInOut})
   
-  paperellaRightTl.to('#paperella_dx', {y: "+=20", rotate: `-=0.4`, duration: 2, ease: Sine.easeInOut})
-  paperellaRightTl.to('#paperella_dx', {y: "-=20", rotate: `+=0.4`, duration: 2, ease: Sine.easeInOut})
-}, ">")
+  paperellaRightTl.to('#paperella_dx', {bottom: "-=2%", rotate: `-=0.4`, duration: 2, ease: Sine.easeInOut})
+  paperellaRightTl.to('#paperella_dx', {bottom: "+=2%", rotate: `+=0.4`, duration: 2, ease: Sine.easeInOut})
+})
 
 rosesTl.to('#hotel_acceso', {opacity: 1, duration: 2.2, ease: Elastic.easeIn.config(2, 0.3)})
 
@@ -332,8 +412,12 @@ let boutiqueHotelTl = gsap.timeline({
       scrub: false,
       pin: false,
       // pinSpacer: false,
-      onEnterBack: function() {
+      onEnter: function() {
+        boutiqueHotelTl.play()
       },
+      onLeaveBack: function() {
+        boutiqueHotelTl.reverse()
+      }
   },
   onStart: function() {
     horseLeftTl.pause()
@@ -344,10 +428,125 @@ let boutiqueHotelTl = gsap.timeline({
   },
   onComplete: function() {
 
-  }
+  },
+  paused: true,
 })
 
 boutiqueHotelTl.to('#horse_2', {top: "-64%", duration: 2.6, ease: Power4.easeOut})
 boutiqueHotelTl.to('#horse_1', {top: "-61%", duration: 2.6, ease: Power4.easeOut}, '<')
 boutiqueHotelTl.to('#paperella_sx', {bottom: "-5%", duration: 2.6, ease: Power4.easeOut}, '<')
 boutiqueHotelTl.to('#paperella_dx', {bottom: "-10%", duration: 2.6, ease: Power4.easeOut}, '<')
+
+let pasticceriaGelateriaTl = gsap.timeline({
+  scrollTrigger: {
+      trigger:'#pasticceria-gelateria',
+      start:"top bottom",
+      scrub: false,
+      pin: false,
+      // pinSpacer: false,
+      onEnter: function() {
+        pasticceriaGelateriaTl.play()
+      },
+      onLeaveBack: function() {
+        //pasticceriaGelateriaTl.reverse()
+      }
+  },
+  onStart: function() {
+
+  },
+  onComplete: function() {
+    pasticceriaGelateriaLampsTl.play()
+    pasticceriaGelateriaFloatingTl.play()
+  },
+  paused: true,
+})
+
+let pasticceriaGelateriaLampsTl = gsap.timeline({
+  paused: true,
+})
+
+pasticceriaGelateriaTl.to('#palla-ice-rosa__container', {top: "13%", right: "0", duration: 2.6, ease: Power4.easeOut})
+pasticceriaGelateriaTl.to('#macaron-rosa__container', {top: "15%", right: "16%", duration: 2.6, ease: Power4.easeOut}, '<')
+pasticceriaGelateriaTl.to('#icecream__container', {bottom: "7%", right: "3%", duration: 2.6, ease: Power4.easeOut}, '<')
+pasticceriaGelateriaTl.to('#macaron-green__container', {bottom: "-8%", right: "19%", duration: 2.6, ease: Power4.easeOut}, '<')
+pasticceriaGelateriaTl.to('#torta__container', {bottom: "-4%", left: "6%", duration: 2.6, ease: Power4.easeOut}, '<')
+
+pasticceriaGelateriaLampsTl.to('#lamp-four__container', {top: "-2%", duration: 0.3, ease: Power4.easeOut})
+pasticceriaGelateriaLampsTl.to('#lamp-three__container', {top: "0", duration: 0.3, ease: Power4.easeOut})
+pasticceriaGelateriaLampsTl.to('#lamp-two__container', {top: "-2%", duration: 0.3, ease: Power4.easeOut})
+pasticceriaGelateriaLampsTl.to('#lamp-one__container', {top: "0", duration: 0.3, ease: Power4.easeOut})
+
+let pasticceriaGelateriaFloatingTl = gsap.timeline({
+  paused: true,
+})
+
+pasticceriaGelateriaFloatingTl.to('#macaron-rosa', {x: "-=20vW", top: "+=5vH", duration: 5, ease: Sine.easeOut})
+pasticceriaGelateriaFloatingTl.to('#palla-ice-rosa__container', {x: "-=2vW", top: "-=12vH", duration: 5, ease: Sine.easeOut}, "<")
+pasticceriaGelateriaFloatingTl.to('#icecream', {x: "-=2vW", top: "-=12vH", rotate: "-=15", duration: 4, ease: Sine.easeOut}, "<")
+pasticceriaGelateriaFloatingTl.to('#macaron-green', {x: "-=2vW", rotate: "+=15", duration: 5, ease: Sine.easeOut}, "<")
+pasticceriaGelateriaFloatingTl.to('#torta', {x: "-=2vW", rotate: "-=18", duration: 6, ease: Sine.easeOut}, "<")
+
+let shopTl = gsap.timeline({
+  scrollTrigger: {
+      trigger:'#shop',
+      start:"top bottom",
+      scrub: false,
+      pin: false,
+      // pinSpacer: false,
+      onEnter: function() {
+        
+      },
+      onLeaveBack: function() {
+        //pasticceriaGelateriaTl.reverse()
+      },
+      onEnterBack: function() {
+
+      }
+  },
+  onStart: function() {
+  },
+  onComplete: function() {
+    shopTl.play()
+  },
+  paused: true,
+})
+
+shopTl.to('#scarpa-one__container', {top: "27%", left: "4%", duration: 2.6, ease: Power4.easeOut})
+shopTl.to('#scarpa-two__container', {top: "3%", left: "4%", duration: 2.6, ease: Power4.easeOut}, "<")
+shopTl.to('#coniglio__container', {top: "0%", right: "0%", duration: 2.6, ease: Power4.easeOut}, "<")
+shopTl.to('#moto__container', {right: "0%", duration: 2.6, ease: Power4.easeOut}, "<")
+
+let areaArredoTl = gsap.timeline({
+  scrollTrigger: {
+      trigger:'#arearredo',
+      start:"top bottom",
+      scrub: false,
+      pin: false,
+      // pinSpacer: false,
+      onEnter: function() {
+
+      },
+      onEnterBack: function() {
+  
+      }
+  },
+  onStart: function() {
+    areaArredoScrollTl.play()
+  },
+  onComplete: function() {
+    //shopTl.play()
+  },
+})
+
+let areaArredoScrollTl = gsap.timeline({paused: true})
+
+areaArredoScrollTl.to('#scarpa-one', {y: "+=95%", duration: 2, ease: Power4.easeOut})
+areaArredoScrollTl.to('#scarpa-two', {y: "+=85%", duration: 2, ease: Power4.easeOut}, '<')
+areaArredoScrollTl.to('#coniglio', {y: "+=65%", duration: 2, ease: Power4.easeOut}, '<')
+areaArredoScrollTl.to('#scarpa-one', {y: "-=95%", duration: 1, delay: 2, ease: Power4.easeOut})
+areaArredoScrollTl.to('#scarpa-two', {y: "-=85%", duration: 1, ease: Power4.easeOut}, '<')
+areaArredoScrollTl.to('#coniglio', {y: "-=65%", duration: 1, ease: Power4.easeOut}, '<')
+
+areaArredoTl.to('#coniglio-arearredo__container', {top: "0", left: "2%", duration: 3, ease: Power4.easeOut}, '<')
+areaArredoTl.to('#frame__container', {top: "0", right: "2%", duration: 0.6, ease: Power4.easeOut})
+areaArredoTl.to('#lamp-conluce__container', {opacity: 1, duration: 2, ease: Elastic.easeInOut})

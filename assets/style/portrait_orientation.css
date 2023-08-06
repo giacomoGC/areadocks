@@ -147,4 +147,58 @@
     right: -18vH;
     width: 78%;
   }
+  #hotel_spento, #hotel_acceso {
+    right: -16vH;
+    height: 87%;
+  }
+  .boutique-hotel__paperelle #paperella_sx {
+    height: 33%;
+  }
+  .boutique-hotel__paperelle #paperella_dx {
+    right: 7vH;
+    height: 25%;
+  }
+  #lamp-one__container, #lamp-three__container {
+    top: -15%;
+  }
+  #lamp-two__container, #lamp-four__container {
+    top: -17%;
+  }
+  #lamp-two__container {
+    left: 14%;
+  }
+  #lamp-four__container {
+    left: 18%;
+  }
+  #icecream__container {
+    height: 30%;
+  }
+  #torta__container {
+    height: 26%;
+  }
+  #macaron-green__container {
+    height: 21%;
+  }
+  #palla-ice-rosa__container {
+    width: 11%;
+  }
+  #macaron-rosa__container {
+    width: 12%;
+  }
+  #borsa__container {
+    left: 6%;
+  }
+  #vestiti__container {
+    left: -50%;
+    height: 62%;
+  }
+  #coniglio__container {
+    height: 29%;
+  }
+  #moto__container {
+    height: 44%;
+  }
+  #manichino__container {
+    height: 55%;
+  }
 }

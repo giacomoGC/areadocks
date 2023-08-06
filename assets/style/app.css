@@ -24,6 +24,18 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
+.fullwidth {
+  width: 100%;
+}
+
+.fullheight {
+  height: 100%;
+}
+
+.relative {
+  position: relative;
+}
+
 .scrollSpacer_c {
   width: 100%;
   display: block;
@@ -85,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   z-index: 15;
-  background: radial-gradient(transparent 15%, black 70%);
+  background: radial-gradient(transparent 15%, rgb(0 0 0 / 59%) 70%);
 }
 
 #hero__world {
@@ -105,6 +117,15 @@ h1, h2, h3, h4, h5, h6 {
   height: 60%;
   opacity: 0;
   z-index: 10;
+}
+
+#hero__luna__img {
+  width: 88px;
+  opacity: 1;
+  z-index: 11;
+  position: absolute;
+  left: -200px;
+  top: 49%;
 }
 
 #hero__main-title {
@@ -231,7 +252,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #loftRestaurant {
-  min-height: calc(100vH + 7px);
+  min-height: calc(100vH + 5px);
   overflow-y: visible;
   position: relative;
   flex-direction: column;
@@ -464,8 +485,8 @@ h1, h2, h3, h4, h5, h6 {
 .pizza-cactus img {
   position: absolute;
   left: 3%;
-  top: -26%;
-  height: 50%;
+  top: -33%;
+  height: 66%;
   z-index: 27;
   object-fit: contain;
   max-width: 60%;
@@ -488,12 +509,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #ventagli, #oriental {
-  height: calc(100vH + 7px);
+  height: calc(100vH + 5px);
   width: 100%;
   overflow: visible;
   position: relative;
   display: flex;
   z-index: 30;
+}
+
+#ventagli {
+  position: absolute;
+  z-index: 40;
+  height: 100%;
 }
 
 #ventagli img {
@@ -585,7 +612,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #secondaclasse__railway, #secondaclasse__main {
-  height: 100vH;
+  height: calc(100vH + 3px);
   width: 100%;
   overflow: visible;
   position: relative;
@@ -642,7 +669,7 @@ h1, h2, h3, h4, h5, h6 {
 #train {
   position: absolute;
   bottom: 0;
-  right: -700%;
+  right: -900%;
   height: 60%;
 }
 
@@ -694,7 +721,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   left: -17vH;
   top: 0;
-  height: 110%;
+  height: 107%;
   width: auto;
   z-index: 25;
 }
@@ -703,7 +730,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   right: -17vH;
   top: 0;
-  height: 110%;
+  height: 107%;
   width: auto;
   z-index: 25;
 }
@@ -769,5 +796,199 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   overflow: visible;
   position: relative;
-  z-index: 25;
+  z-index: 20;
+}
+
+#lamp-one__container {
+  position: absolute;
+  left: 3%;
+  top: -7%;
+  height: 28%;
+}
+
+#lamp-two__container {
+  position: absolute;
+  left: 9%;
+  top: -9%;
+  height: 23%;
+}
+
+#lamp-three__container {
+  position: absolute;
+  left: 5%;
+  top: -7%;
+  height: 33%;
+}
+
+#lamp-four__container {
+  position: absolute;
+  left: 12%;
+  top: -9%;
+  height: 26%;
+}
+
+
+#palla-ice-rosa__container {
+  position: absolute;
+  top: -35%;
+  right: -15%;
+  width: 9%;
+  max-width: 125px;
+}
+
+#macaron-rosa__container {
+  position: absolute;
+  top: -35%;
+  right: -5%;
+  width: 5%;
+  max-width: 110px;
+}
+
+#macaron-green__container {
+  position: absolute;
+  right: 19%;
+  bottom: 55%;
+  height: 27%;
+}
+
+#icecream__container {
+  position: absolute;
+  right: -9%;
+  bottom: 50%;
+  height: 41%;
+}
+
+#torta__container {
+  position: absolute;
+  left: 6%;
+  bottom: 49%;
+  height: 30%;
+}
+
+#shop {
+  background-image:  url('../../assets/images/shop-bg.jpg');
+  background-size: cover;
+  background-position: bottom;
+  position: relative;
+  z-index: 15;
+}
+
+#luci__container {
+  position: absolute;
+  top: 0;
+  height: 85%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#borsa__container {
+  position: absolute;
+  bottom: -4%;
+  height: 35%;
+  left: 28%;
+}
+
+#coniglio__container {
+  position: absolute;
+  top: -25%;
+  right: -50%;
+  height: 35%;
+}
+
+#manichino__container {
+  position: absolute;
+  bottom: 0;
+  right: 15%;
+  height: 69%;
+}
+
+#moto__container {
+  position: absolute;
+  bottom: 0;
+  right: -50%;
+  height: 51%;
+}
+
+#vestiti__container {
+  position: absolute;
+  bottom: -15%;
+  left: -8%;
+  height: 74%;
+}
+
+#scarpa-one__container {
+  position: absolute;
+  top: -33%;
+  left: -45%;
+  height: 20%;
+}
+
+#scarpa-two__container {
+  position: absolute;
+  top: -36%;
+  left: -44%;
+  height: 17%;
+}
+
+#lamp__container, #divano__container, #cassaforte__container, #frame__container, #bamboo__container, #coniglio-arearredo__container  {
+  position: absolute;
+}
+
+#arearredo {
+  background-image:  url('../../assets/images/arearredo-bg.png');
+  background-size: cover;
+  background-position: bottom;
+  position: relative;
+}
+
+#divano__container {
+  bottom: -6%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 45%;
+}
+
+#cassaforte__container {
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  height: 38%;
+  right: -3%;
+}
+
+#bamboo__container {
+  bottom: -6%;
+  display: flex;
+  justify-content: center;
+  height: 56%;
+  left: -16%;
+}
+
+#frame__container {
+  top: -3%;
+  right: 2%;
+  height: 41%;
+}
+
+#coniglio-arearredo__container {
+  left: -30%;
+  height: 32%;
+  top: -33%;
+}
+
+#lamp-senzaluce__container, #lamp-conluce__container {
+  bottom: 0%;
+  display: flex;
+  justify-content: center;
+  height: 65%;
+  left: 0%;
+  position: absolute;
+}
+
+#lamp-conluce__container {
+  opacity: 0;
 }
