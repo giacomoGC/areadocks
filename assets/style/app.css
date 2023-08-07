@@ -1,7 +1,5 @@
 body {
   margin: 0;
-  pointer-events: none;
-  touch-action: none;
   background-color: black;
 }
 
@@ -252,7 +250,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #loftRestaurant {
-  min-height: calc(100vH + 5px);
+  min-height: calc(100vH + 2px);
   overflow-y: visible;
   position: relative;
   flex-direction: column;
@@ -509,7 +507,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #ventagli, #oriental {
-  height: calc(100vH + 5px);
+  height: calc(100vH + 2px);
   width: 100%;
   overflow: visible;
   position: relative;
@@ -612,7 +610,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #secondaclasse__railway, #secondaclasse__main {
-  height: calc(100vH + 3px);
+  height: calc(100vH + 2px);
   width: 100%;
   overflow: visible;
   position: relative;

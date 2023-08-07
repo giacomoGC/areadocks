@@ -318,9 +318,13 @@ ventagliSlideOutTimeline.to('#ventaglio_1', {x: "130%", duration: 2, delay: 0.3,
 ventagliSlideOutTimeline.to('#ventaglio_2', {x: "130%", duration: 2.2, ease: Power4.easeIn}, '<')
 
 let samuraiMaskTimeline = gsap.timeline({repeat: -1});
+let umbrellaTimeline = gsap.timeline({repeat: -1});
 
 samuraiMaskTimeline.to('#samurai-mask', {y: "-=30", rotate: `-=1`, duration: 2, ease: Sine.easeInOut})
 samuraiMaskTimeline.to('#samurai-mask', {y: "+=30", rotate: `+=1`, duration: 2, ease: Sine.easeInOut})
+
+umbrellaTimeline.to('#umbrella', {y: "-=20", rotate: `-=3`, duration: 2.7, ease: Sine.easeInOut})
+umbrellaTimeline.to('#umbrella', {y: "+=20", rotate: `+=3`, duration: 2.7, ease: Sine.easeInOut})
 
 // Seconda classe
 
