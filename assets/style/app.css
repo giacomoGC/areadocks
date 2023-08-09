@@ -146,17 +146,22 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 15;
 }
 
-#zodiac-wrapper__img {
+#zodiac-wrapper a {
   width: calc(25% - 10px);
   opacity: 0.64;
   transition: all 0.3s ease-in-out;
+  display: inline-block;
 }
 
-#zodiac-wrapper__img:hover {
+#zodiac-wrapper a img {
+  width: 100%;
+}
+
+#zodiac-wrapper a:hover {
   opacity: 1;
 }
 
-#zodiac-wrapper__img:first-child, #zodiac-wrapper__img:last-child {
+#zodiac-wrapper a:first-child, #zodiac-wrapper a:last-child {
   position: relative;
   top: 25%;
 }
@@ -385,7 +390,7 @@ h1, h2, h3, h4, h5, h6 {
   object-position: left;
 }
 
-#loftRestaurant .crystal-zodiac-wrapper img {
+#loftRestaurant .crystal-zodiac-wrapper a, #loftRestaurant .crystal-zodiac-wrapper img {
   width: 100%;
 }
 

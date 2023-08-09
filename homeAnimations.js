@@ -133,7 +133,11 @@ function goToSection(i, anim) {
 gsap.utils.toArray("section").forEach((panel, i) => {
   ScrollTrigger.create({
     trigger: panel,
-    onEnter: () => goToSection(i),
+    onEnter: function() {
+      if(isScrolling === false) {
+        goToSection(i)
+      }
+    },
   });
   
   // ScrollTrigger.create({
@@ -142,6 +146,29 @@ gsap.utils.toArray("section").forEach((panel, i) => {
   //   onEnterBack: () => goToSection(i),
   // });
 });
+
+function scrollToAnchor(section, event) {
+  event.preventDefault()
+
+  if(isScrolling === false) {
+    isScrolling = true;
+    console.log(firstElem)
+
+    gsap.to(window, {
+      scrollTo: section,
+      duration: 2,
+      ease: Power4.EaseOut,
+      onStart: scrolling.disable(),
+      onComplete: function() {
+        scrolling.enable();
+        isScrolling = false; 
+        // setTimeout(function() {
+        //   ScrollTrigger.refresh()
+        // }, 1000)
+      },
+    });
+  }
+}
 
 function generateRandomFromRange(max) {
   return (
@@ -297,10 +324,10 @@ pizzaParallaxTl.to('.pizza-slices', {top: "+=11%", duration: 2.6, ease: Power4.e
 let ventaglioOneTimeline = gsap.timeline({repeat: -1});
 let ventaglioTwoTimeline = gsap.timeline({repeat: -1});
 
-ventaglioOneTimeline.to('#parasol_1', {rotate: `+=360`, duration: 2, ease: null})
-gsap.to("#parasol_1", {rotation: 360, duration: 4, ease: 'none', repeat: -1});
-gsap.to("#parasol_2", {rotation: -360, duration: 6, ease: 'none', repeat: -1});
-gsap.to("#parasol_3", {rotation: 360, duration: 8, ease: 'none', repeat: -1});
+//ventaglioOneTimeline.to('#parasol_1', {rotate: `+=360`, duration: 2, ease: null})
+// gsap.to("#parasol_1", {rotation: 360, duration: 4, ease: 'none', repeat: -1});
+// gsap.to("#parasol_2", {rotation: -360, duration: 6, ease: 'none', repeat: -1});
+// gsap.to("#parasol_3", {rotation: 360, duration: 8, ease: 'none', repeat: -1});
 
 let ventagliSlideOutTimeline = gsap.timeline({
   scrollTrigger:{
@@ -309,13 +336,13 @@ let ventagliSlideOutTimeline = gsap.timeline({
   },
 })
 
-ventagliSlideOutTimeline.to('#parasol_1', {x: "-160%", duration: 2.2, delay: 0.5, ease: Power4.easeIn})
-ventagliSlideOutTimeline.to('#parasol_2', {x: "-140%", duration: 1.9, ease: Power4.easeIn}, '<+=0.3')
-ventagliSlideOutTimeline.to('#parasol_3', {x: "-130%", duration: 1.6, ease: Power4.easeIn}, '<+=0.3')
+// ventagliSlideOutTimeline.to('#parasol_1', {x: "-160%", duration: 2.2, delay: 3, ease: Power4.easeIn})
+// ventagliSlideOutTimeline.to('#parasol_2', {x: "-140%", duration: 1.9, ease: Power4.easeIn}, '<+=0.3')
+// ventagliSlideOutTimeline.to('#parasol_3', {x: "-130%", duration: 1.6, ease: Power4.easeIn}, '<+=0.3')
 ventagliSlideOutTimeline.to('#ventagli-oriental__wrapper #cactus__img', {x: "-140%", duration: 1.36, ease: Power4.easeIn}, '<')
 
-ventagliSlideOutTimeline.to('#ventaglio_1', {x: "130%", duration: 2, delay: 0.3, ease: Power4.easeIn}, '<')
-ventagliSlideOutTimeline.to('#ventaglio_2', {x: "130%", duration: 2.2, ease: Power4.easeIn}, '<')
+// ventagliSlideOutTimeline.to('#ventaglio_1', {x: "130%", duration: 2, delay: 0.3, ease: Power4.easeIn}, '<')
+// ventagliSlideOutTimeline.to('#ventaglio_2', {x: "130%", duration: 2.2, ease: Power4.easeIn}, '<')
 
 let samuraiMaskTimeline = gsap.timeline({repeat: -1});
 let umbrellaTimeline = gsap.timeline({repeat: -1});
@@ -554,3 +581,8 @@ areaArredoScrollTl.to('#coniglio', {y: "-=65%", duration: 1, ease: Power4.easeOu
 areaArredoTl.to('#coniglio-arearredo__container', {top: "0", left: "2%", duration: 3, ease: Power4.easeOut}, '<')
 areaArredoTl.to('#frame__container', {top: "0", right: "2%", duration: 0.6, ease: Power4.easeOut})
 areaArredoTl.to('#lamp-conluce__container', {opacity: 1, duration: 2, ease: Elastic.easeInOut})
+
+$('#zodiac-wrapper a').click(function(event) {
+  console.log('clickj')
+  scrollToAnchor('#boutique__wrapper', event)
+})
