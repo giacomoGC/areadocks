@@ -509,6 +509,7 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover;
   background-position: bottom center;
   z-index: 20;
+  opacity: 0;
 }
 
 #ventagli, #oriental {
@@ -582,6 +583,54 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
 }
 
+#parasol_4 {
+  left: 23%;
+  height: 90%;
+  top: -7%;
+  max-width: 73%;
+  object-fit: contain;
+}
+
+#parasol_5 {
+  left: 61%;
+  height: 72%;
+  top: -5%;
+  max-width: 65%;
+  object-fit: contain;
+}
+
+#parasol_6 {
+  left: 23%;
+  height: 62%;
+  top: 45%;
+  max-width: 48%;
+  object-fit: contain;
+}
+
+#parasol_7 {
+  left: 53%;
+  height: 69%;
+  bottom: -6%;
+  max-width: 73%;
+  object-fit: contain;
+}
+
+#parasol_8 {
+  right: -16%;
+  height: 56%;
+  top: 38%;
+  max-width: 41%;
+  object-fit: contain;
+}
+
+#parasol_9 {
+  left: 3%;
+  height: 74%;
+  bottom: 26%;
+  max-width: 73%;
+  object-fit: contain;
+}
+
 #parasol_1, #parasol_2, #parasol_3 {
 
 }
@@ -589,7 +638,7 @@ h1, h2, h3, h4, h5, h6 {
 #samurai-mask {
   height: 99%;
   position: absolute;
-  left: -16%;
+  left: -55%;
   bottom: -24%;
 }
 
@@ -603,7 +652,7 @@ h1, h2, h3, h4, h5, h6 {
 #north-bottom-right-fan {
   height: 99%;
   position: absolute;
-  right: -19%;
+  right: -55%;
   bottom: -53%;
 }
 

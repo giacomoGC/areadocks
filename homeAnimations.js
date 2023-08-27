@@ -293,6 +293,33 @@ pizzaTl.fromTo('#cactus__img', {y: "+=200", opacity: 0}, {y: "0", opacity: 1, du
 
 // Pizza parallax
 
+let secondStonewallBgTl = gsap.timeline({
+  scrollTrigger: {
+    trigger:'#pizza .bg-blue-stonewall',
+    start:"bottom bottom-=10px",
+    end: '+=100%',
+    scrub: 0,
+    pin: true,
+    pinSpacer: false,
+  }   
+})
+
+secondStonewallBgTl.to('#pizza .bg-blue-stonewall', {autoAlpha: 0, ease: Power4.easeIn})
+secondStonewallBgTl.to('#ventagli-oriental__wrapper', {autoAlpha: 1, ease: Power4.easeIn}, '<')
+
+let pizza_bgBlackGradientTl = gsap.timeline({
+  scrollTrigger: {
+      trigger:'#pizza .bg-black-gradient',
+      start:"bottom bottom-=10px",
+      end: '+=100%',
+      scrub: 0,
+      pin: true,
+      pinSpacer: false,
+  }   
+})
+
+pizza_bgBlackGradientTl.to('#pizza .bg-black-gradient', {autoAlpha: 0, ease: Power4.easeIn})
+
 let pizzaParallaxTl = gsap.timeline({
   scrollTrigger: {
       trigger:'#ventagli-oriental__wrapper',
@@ -324,34 +351,52 @@ pizzaParallaxTl.to('.pizza-slices', {top: "+=11%", duration: 2.6, ease: Power4.e
 let ventaglioOneTimeline = gsap.timeline({repeat: -1});
 let ventaglioTwoTimeline = gsap.timeline({repeat: -1});
 
-//ventaglioOneTimeline.to('#parasol_1', {rotate: `+=360`, duration: 2, ease: null})
-// gsap.to("#parasol_1", {rotation: 360, duration: 4, ease: 'none', repeat: -1});
-// gsap.to("#parasol_2", {rotation: -360, duration: 6, ease: 'none', repeat: -1});
-// gsap.to("#parasol_3", {rotation: 360, duration: 8, ease: 'none', repeat: -1});
+gsap.to("#parasol_1", {rotation: 360, duration: 4, ease: 'none', repeat: -1});
+gsap.to("#parasol_2", {rotation: -360, duration: 6, ease: 'none', repeat: -1});
+gsap.to("#parasol_3", {rotation: 360, duration: 5, ease: 'none', repeat: -1});
+gsap.to("#parasol_4", {rotation: 360, duration: 6, ease: 'none', repeat: -1});
+gsap.to("#parasol_5", {rotation: -360, duration: 3, ease: 'none', repeat: -1});
+gsap.to("#parasol_6", {rotation: 360, duration: 8, ease: 'none', repeat: -1});
+gsap.to("#parasol_7", {rotation: 360, duration: 7, ease: 'none', repeat: -1});
+gsap.to("#parasol_8", {rotation: -360, duration: 5, ease: 'none', repeat: -1});
+gsap.to("#parasol_9", {rotation: 360, duration: 4, ease: 'none', repeat: -1});
 
 let ventagliSlideOutTimeline = gsap.timeline({
   scrollTrigger:{
       trigger:'#oriental',
       start:"top top+=10px",
   },
+  delay: 0.5,
 })
 
-// ventagliSlideOutTimeline.to('#parasol_1', {x: "-160%", duration: 2.2, delay: 3, ease: Power4.easeIn})
-// ventagliSlideOutTimeline.to('#parasol_2', {x: "-140%", duration: 1.9, ease: Power4.easeIn}, '<+=0.3')
-// ventagliSlideOutTimeline.to('#parasol_3', {x: "-130%", duration: 1.6, ease: Power4.easeIn}, '<+=0.3')
-ventagliSlideOutTimeline.to('#ventagli-oriental__wrapper #cactus__img', {x: "-140%", duration: 1.36, ease: Power4.easeIn}, '<')
+ventagliSlideOutTimeline.to('#ventagli-oriental__wrapper #cactus__img', {left: "-140%", duration: 1.36, ease: Power4.easeIn})
+ventagliSlideOutTimeline.to('#parasol_1', {left: "-50%", duration: 3.36, ease: Power4.easeIn}, '<')
+ventagliSlideOutTimeline.to('#parasol_2', {left: "-50%", duration: 3.7, ease: Power4.easeOut}, '<')
+ventagliSlideOutTimeline.to('#parasol_3', {left: "-100%", duration: 3.8, ease: Power4.easeOut}, '<')
+ventagliSlideOutTimeline.to('#parasol_4', {left: "+100%", duration: 3.4, ease: Power4.easeOut}, '<')
+ventagliSlideOutTimeline.to('#parasol_5', {left: "+100%", duration: 3.6, ease: Power4.easeOut}, '<')
+ventagliSlideOutTimeline.to('#parasol_6', {left: "-50%", duration: 3.7, ease: Power4.easeOut}, '<')
+ventagliSlideOutTimeline.to('#parasol_7', {left: "+100%", duration: 3.8, ease: Power4.easeOut}, '<')
+ventagliSlideOutTimeline.to('#parasol_8', {right: "+100%", duration: 3.4, ease: Power4.easeOut}, '<')
+ventagliSlideOutTimeline.to('#parasol_9', {left: "+100%", duration: 3.5, ease: Power4.easeOut}, '<')
+ventagliSlideOutTimeline.to('#samurai-mask', {left: "-16%", duration: 1, ease: Power4.easeOut})
+ventagliSlideOutTimeline.to('#north-bottom-right-fan', {right: "-19%", duration: 1, ease: Power4.easeOut}, '<')
 
 // ventagliSlideOutTimeline.to('#ventaglio_1', {x: "130%", duration: 2, delay: 0.3, ease: Power4.easeIn}, '<')
 // ventagliSlideOutTimeline.to('#ventaglio_2', {x: "130%", duration: 2.2, ease: Power4.easeIn}, '<')
 
 let samuraiMaskTimeline = gsap.timeline({repeat: -1});
 let umbrellaTimeline = gsap.timeline({repeat: -1});
+let northBottomFanTimeline = gsap.timeline({repeat: -1});
 
 samuraiMaskTimeline.to('#samurai-mask', {y: "-=30", rotate: `-=1`, duration: 2, ease: Sine.easeInOut})
 samuraiMaskTimeline.to('#samurai-mask', {y: "+=30", rotate: `+=1`, duration: 2, ease: Sine.easeInOut})
 
 umbrellaTimeline.to('#umbrella', {y: "-=20", rotate: `-=3`, duration: 2.7, ease: Sine.easeInOut})
 umbrellaTimeline.to('#umbrella', {y: "+=20", rotate: `+=3`, duration: 2.7, ease: Sine.easeInOut})
+
+samuraiMaskTimeline.to('#north-bottom-right-fan', {y: "-=30", rotate: `-=1`, duration: 2, ease: Sine.easeInOut})
+samuraiMaskTimeline.to('#north-bottom-right-fan', {y: "+=30", rotate: `+=1`, duration: 2, ease: Sine.easeInOut})
 
 // Seconda classe
 
