@@ -832,15 +832,15 @@ h1, h2, h3, h4, h5, h6 {
 .boutique-hotel__paperelle #paperella_sx {
   position: absolute;
   bottom: 2%;
-  left: 0;
-  height: 38%;
+  left: -4%;
+  height: 46%;
 }
 
 .boutique-hotel__paperelle #paperella_dx {
   position: absolute;
   bottom: 7%;
   right: 20vH;
-  height: 30%;
+  height: 36%;
 }
 
 #pasticceria-gelateria {
@@ -1009,7 +1009,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: center;
   height: 38%;
-  right: -3%;
+  right: -33%;
 }
 
 #bamboo__container {

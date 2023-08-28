@@ -361,6 +361,10 @@ gsap.to("#parasol_7", {rotation: 360, duration: 7, ease: 'none', repeat: -1});
 gsap.to("#parasol_8", {rotation: -360, duration: 5, ease: 'none', repeat: -1});
 gsap.to("#parasol_9", {rotation: 360, duration: 4, ease: 'none', repeat: -1});
 
+gsap.fromTo('#samurai-mask', {y: "+=30", rotate: `+=1`}, {y: "-=30", rotate: `-=1`, duration: 2, repeat: -1, ease: Sine.easeInOut})
+gsap.fromTo('#umbrella', {y: "+=20", rotate: `+=1`}, {y: "-=20", rotate: `-=1`, duration: 2, repeat: -1, ease: Sine.easeInOut})
+gsap.fromTo('#north-bottom-right-fan', {y: "+=30", rotate: `+=1`}, {y: "-=30", rotate: `-=1`, duration: 2, repeat: -1, ease: Sine.easeInOut})
+
 let ventagliSlideOutTimeline = gsap.timeline({
   scrollTrigger:{
       trigger:'#oriental',
@@ -369,34 +373,20 @@ let ventagliSlideOutTimeline = gsap.timeline({
   delay: 0.5,
 })
 
-ventagliSlideOutTimeline.to('#ventagli-oriental__wrapper #cactus__img', {left: "-140%", duration: 1.36, ease: Power4.easeIn})
-ventagliSlideOutTimeline.to('#parasol_1', {left: "-50%", duration: 3.36, ease: Power4.easeIn}, '<')
-ventagliSlideOutTimeline.to('#parasol_2', {left: "-50%", duration: 3.7, ease: Power4.easeOut}, '<')
+ventagliSlideOutTimeline.to('#ventagli-oriental__wrapper #cactus__img', {left: "-140%", duration: 1.36, ease: Power4.easeOut})
+ventagliSlideOutTimeline.to('#parasol_1', {left: "-100%", duration: 3.36, ease: Power4.easeOut}, '<')
+ventagliSlideOutTimeline.to('#parasol_2', {left: "-100%", duration: 3.7, ease: Power4.easeOut}, '<')
 ventagliSlideOutTimeline.to('#parasol_3', {left: "-100%", duration: 3.8, ease: Power4.easeOut}, '<')
 ventagliSlideOutTimeline.to('#parasol_4', {left: "+100%", duration: 3.4, ease: Power4.easeOut}, '<')
 ventagliSlideOutTimeline.to('#parasol_5', {left: "+100%", duration: 3.6, ease: Power4.easeOut}, '<')
-ventagliSlideOutTimeline.to('#parasol_6', {left: "-50%", duration: 3.7, ease: Power4.easeOut}, '<')
+ventagliSlideOutTimeline.to('#parasol_6', {left: "-100%", duration: 3.7, ease: Power4.easeOut}, '<')
 ventagliSlideOutTimeline.to('#parasol_7', {left: "+100%", duration: 3.8, ease: Power4.easeOut}, '<')
 ventagliSlideOutTimeline.to('#parasol_8', {right: "+100%", duration: 3.4, ease: Power4.easeOut}, '<')
 ventagliSlideOutTimeline.to('#parasol_9', {left: "+100%", duration: 3.5, ease: Power4.easeOut}, '<')
-ventagliSlideOutTimeline.to('#samurai-mask', {left: "-16%", duration: 1, ease: Power4.easeOut})
+ventagliSlideOutTimeline.to('#samurai-mask', {left: "-16%", duration: 1, ease: Power4.easeOut}, '<+=2')
 ventagliSlideOutTimeline.to('#north-bottom-right-fan', {right: "-19%", duration: 1, ease: Power4.easeOut}, '<')
-
-// ventagliSlideOutTimeline.to('#ventaglio_1', {x: "130%", duration: 2, delay: 0.3, ease: Power4.easeIn}, '<')
-// ventagliSlideOutTimeline.to('#ventaglio_2', {x: "130%", duration: 2.2, ease: Power4.easeIn}, '<')
-
-let samuraiMaskTimeline = gsap.timeline({repeat: -1});
-let umbrellaTimeline = gsap.timeline({repeat: -1});
-let northBottomFanTimeline = gsap.timeline({repeat: -1});
-
-samuraiMaskTimeline.to('#samurai-mask', {y: "-=30", rotate: `-=1`, duration: 2, ease: Sine.easeInOut})
-samuraiMaskTimeline.to('#samurai-mask', {y: "+=30", rotate: `+=1`, duration: 2, ease: Sine.easeInOut})
-
-umbrellaTimeline.to('#umbrella', {y: "-=20", rotate: `-=3`, duration: 2.7, ease: Sine.easeInOut})
-umbrellaTimeline.to('#umbrella', {y: "+=20", rotate: `+=3`, duration: 2.7, ease: Sine.easeInOut})
-
-samuraiMaskTimeline.to('#north-bottom-right-fan', {y: "-=30", rotate: `-=1`, duration: 2, ease: Sine.easeInOut})
-samuraiMaskTimeline.to('#north-bottom-right-fan', {y: "+=30", rotate: `+=1`, duration: 2, ease: Sine.easeInOut})
+ventagliSlideOutTimeline.to('#ventaglio_1', {x: "130%", duration: 2, ease: Power4.easeIn}, '<')
+ventagliSlideOutTimeline.to('#ventaglio_2', {x: "130%", duration: 2.2, ease: Power4.easeIn}, '<')
 
 // Seconda classe
 
@@ -411,15 +401,15 @@ bisteccaBottomRightTimeline.to('#bistecca-bottomright', {y: "+=30", rotate: `+=3
 
 let trainTl = gsap.timeline({
   scrollTrigger: {
-      trigger:'#secondaclasse__main',
-      start:"top bottom-=10px",
-  },
-  delay: 2,
-  repeat: -1,
-  repeatDelay: 1,   
+      trigger:'#secondaclasse__railway',
+      start:"top top+=10px",
+  }, 
 })
 
-trainTl.to("#train", {left: "-400%", duration: 9, ease: 'none'});
+trainTl.to("#train", {left: "-3000px", duration: 9, ease: 'none'});
+trainTl.add(function() {
+  goToSection(5)
+})
 
 // Roses
 let isRosesTlReversing = false;
@@ -554,6 +544,13 @@ pasticceriaGelateriaLampsTl.to('#lamp-one__container', {top: "0", duration: 0.3,
 
 let pasticceriaGelateriaFloatingTl = gsap.timeline({
   paused: true,
+  onComplete: function() {
+    gsap.to('#palla-ice-rosa__container', {y: "+=12", rotate: `-=1`, duration: 2, ease: Sine.easeInOut, repeat: -1, yoyo: true})
+    gsap.to('#macaron-rosa', {y: "+=11", rotate: `-=2`, duration: 2, ease: Sine.easeInOut, repeat: -1, yoyo: true})
+    gsap.to('#icecream', {y: "+=8", rotate: `-=2`, duration: 2, ease: Sine.easeInOut, repeat: -1, yoyo: true})
+    gsap.to('#macaron-green', {y: "+=13", rotate: `-=1`, duration: 2, ease: Sine.easeInOut, repeat: -1, yoyo: true})
+    gsap.to('#torta', {y: "+=12", rotate: `-=1`, duration: 2, ease: Sine.easeInOut, repeat: -1, yoyo: true})
+  }
 })
 
 pasticceriaGelateriaFloatingTl.to('#macaron-rosa', {x: "-=20vW", top: "+=5vH", duration: 5, ease: Sine.easeOut})
@@ -561,6 +558,18 @@ pasticceriaGelateriaFloatingTl.to('#palla-ice-rosa__container', {x: "-=2vW", top
 pasticceriaGelateriaFloatingTl.to('#icecream', {x: "-=2vW", top: "-=12vH", rotate: "-=15", duration: 4, ease: Sine.easeOut}, "<")
 pasticceriaGelateriaFloatingTl.to('#macaron-green', {x: "-=2vW", rotate: "+=15", duration: 5, ease: Sine.easeOut}, "<")
 pasticceriaGelateriaFloatingTl.to('#torta', {x: "-=2vW", rotate: "-=18", duration: 6, ease: Sine.easeOut}, "<")
+
+// let pasticceriaGelateriaScrollTl = gsap.timeline({
+//   scrollTrigger: {
+//     trigger:'#pasticceria-gelateria',
+//     start:"top bottom",
+//       pin: true,
+//       pinSpacer: false,
+//   }   
+// })
+
+// pasticceriaGelateriaScrollTl.to('#pasticceria-gelateria', {autoAlpha: 0, ease: Power4.easeIn})
+// pasticceriaGelateriaScrollTl.to('#shop', {autoAlpha: 1, ease: Power4.easeIn}, '<')
 
 let shopTl = gsap.timeline({
   scrollTrigger: {
@@ -624,8 +633,10 @@ areaArredoScrollTl.to('#scarpa-two', {y: "-=85%", duration: 1, ease: Power4.ease
 areaArredoScrollTl.to('#coniglio', {y: "-=65%", duration: 1, ease: Power4.easeOut}, '<')
 
 areaArredoTl.to('#coniglio-arearredo__container', {top: "0", left: "2%", duration: 3, ease: Power4.easeOut}, '<')
+areaArredoTl.fromTo('#divano', {y: '-=130', autoAlpha: 0}, {y: '0', autoAlpha: 1, duration: 2, ease: Elastic.easeInOut})
+areaArredoTl.to('#cassaforte__container', {right: '-3%', duration: 2, ease: Elastic.easeInOut})
 areaArredoTl.to('#frame__container', {top: "0", right: "2%", duration: 0.6, ease: Power4.easeOut})
-areaArredoTl.to('#lamp-conluce__container', {opacity: 1, duration: 2, ease: Elastic.easeInOut})
+areaArredoTl.to('#lamp-conluce__container', {opacity: 1, duration: 2, ease: Elastic.easeInOut}, '<')
 
 $('#zodiac-wrapper a').click(function(event) {
   console.log('clickj')
