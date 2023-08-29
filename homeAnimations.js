@@ -196,7 +196,8 @@ loftRestaurantTl.to('#leaves .leaves-bg', {opacity: 0, duration: 1.7, ease: Powe
 
 loftRestaurantTl.fromTo('#loftRestaurant .crystal-wrapper img',{y: "-110%"}, {y: "0", duration: 2.25, delay: 0.3, ease: Power4.easeOut})
 loftRestaurantTl.to('#loftRestaurant .crystal-zodiac-wrapper__noglow-img', {opacity: 1, duration: 0.3, ease: Power4.easeIn})
-loftRestaurantTl.fromTo('#loftRestaurant .crystal-zodiac-wrapper__main-img',{opacity: 0}, {opacity: 1, duration: 2, ease: Elastic.easeIn.config(2, 0.3)}, "<")
+loftRestaurantTl.fromTo('#loftRestaurant .crystal-zodiac-wrapper__main-img', {opacity: 0}, {opacity: 1, duration: 2, ease: Elastic.easeIn.config(2, 0.3)}, "<")
+loftRestaurantTl.to('#loftRestaurant h2', {opacity: 1, duration: 3, delay: 0.4, ease: Power4.easeOut})
 
 let leavesRevealTl = gsap.timeline({
   scrollTrigger:{
@@ -287,9 +288,9 @@ pizzaTl.add(pizzaSliceTwoTimeline, '<')
 pizzaTl.to('#pizza-slice_5', {x: "-=70%", y: "+=100%", autoAlpha: 0, duration: 2, ease: Power4.easeOut}, '<')
 pizzaTl.to('#pizza-slice_6', {x: "+=5%", y: "+=100%", autoAlpha: 0, duration: 2, ease: Power4.easeOut}, '<')
 pizzaTl.to('#pizza #tagliere', {x: "-115%", y: "-20%", scale: "1.3", duration: 2, ease: Power4.easeOut})
-
 pizzaTl.fromTo('#pizza #pizza-cheft-hat__img', {x: "+=20", y: "+=5", opacity: 0}, {x: "0", y: "0", opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=0.3')
 pizzaTl.fromTo('#cactus__img', {y: "+=200", opacity: 0}, {y: "0", opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=0.3')
+pizzaTl.to('#pizza .pizza-tagliere-wrapper h2', {opacity: 1, duration: 3, delay: 0.2, ease: Power4.easeOut})
 
 // Pizza parallax
 
@@ -361,16 +362,16 @@ gsap.to("#parasol_7", {rotation: 360, duration: 7, ease: 'none', repeat: -1});
 gsap.to("#parasol_8", {rotation: -360, duration: 5, ease: 'none', repeat: -1});
 gsap.to("#parasol_9", {rotation: 360, duration: 4, ease: 'none', repeat: -1});
 
-gsap.fromTo('#samurai-mask', {y: "+=30", rotate: `+=1`}, {y: "-=30", rotate: `-=1`, duration: 2, repeat: -1, ease: Sine.easeInOut})
-gsap.fromTo('#umbrella', {y: "+=20", rotate: `+=1`}, {y: "-=20", rotate: `-=1`, duration: 2, repeat: -1, ease: Sine.easeInOut})
-gsap.fromTo('#north-bottom-right-fan', {y: "+=30", rotate: `+=1`}, {y: "-=30", rotate: `-=1`, duration: 2, repeat: -1, ease: Sine.easeInOut})
+gsap.fromTo('#samurai-mask', {y: "+=30", rotate: `+=1`}, {y: "-=30", rotate: `-=1`, duration: 2, yoyo: true, repeat: -1, ease: Sine.easeInOut})
+gsap.fromTo('#umbrella', {y: "+=20", rotate: `+=1`}, {y: "-=20", rotate: `-=1`, duration: 2, yoyo: true, repeat: -1, ease: Sine.easeInOut})
+gsap.fromTo('#north-bottom-right-fan', {y: "+=30", rotate: `+=1`}, {y: "-=30", rotate: `-=1`, yoyo: true, duration: 2, repeat: -1, ease: Sine.easeInOut})
 
 let ventagliSlideOutTimeline = gsap.timeline({
   scrollTrigger:{
       trigger:'#oriental',
       start:"top top+=10px",
   },
-  delay: 0.5,
+  delay: 2,
 })
 
 ventagliSlideOutTimeline.to('#ventagli-oriental__wrapper #cactus__img', {left: "-140%", duration: 1.36, ease: Power4.easeOut})
@@ -385,8 +386,7 @@ ventagliSlideOutTimeline.to('#parasol_8', {right: "+100%", duration: 3.4, ease: 
 ventagliSlideOutTimeline.to('#parasol_9', {left: "+100%", duration: 3.5, ease: Power4.easeOut}, '<')
 ventagliSlideOutTimeline.to('#samurai-mask', {left: "-16%", duration: 1, ease: Power4.easeOut}, '<+=2')
 ventagliSlideOutTimeline.to('#north-bottom-right-fan', {right: "-19%", duration: 1, ease: Power4.easeOut}, '<')
-ventagliSlideOutTimeline.to('#ventaglio_1', {x: "130%", duration: 2, ease: Power4.easeIn}, '<')
-ventagliSlideOutTimeline.to('#ventaglio_2', {x: "130%", duration: 2.2, ease: Power4.easeIn}, '<')
+ventagliSlideOutTimeline.to('#oriental h2', {opacity: 1, duration: 3, delay: 0.8, ease: Power4.easeOut})
 
 // Seconda classe
 
@@ -410,6 +410,15 @@ trainTl.to("#train", {left: "-3000px", duration: 9, ease: 'none'});
 trainTl.add(function() {
   goToSection(5)
 })
+
+let secondaclasseMainTl = gsap.timeline({
+  scrollTrigger: {
+      trigger:'#secondaclasse__main',
+      start:"top top+=20px",
+  }, 
+})
+
+secondaclasseMainTl.to('#secondaclasse-text', {opacity: 1, duration: 3, delay: 0.8, ease: Power4.easeOut})
 
 // Roses
 let isRosesTlReversing = false;
@@ -470,6 +479,7 @@ rosesTl.add(function() {
 })
 
 rosesTl.to('#hotel_acceso', {opacity: 1, duration: 2.2, ease: Elastic.easeIn.config(2, 0.3)})
+rosesTl.to('#boutique-hotel h2', {opacity: 1, duration: 3, delay: 0.8, ease: Power4.easeOut})
 
 let boutiqueHotelTl = gsap.timeline({
   scrollTrigger: {
@@ -541,6 +551,7 @@ pasticceriaGelateriaLampsTl.to('#lamp-four__container', {top: "-2%", duration: 0
 pasticceriaGelateriaLampsTl.to('#lamp-three__container', {top: "0", duration: 0.3, ease: Power4.easeOut})
 pasticceriaGelateriaLampsTl.to('#lamp-two__container', {top: "-2%", duration: 0.3, ease: Power4.easeOut})
 pasticceriaGelateriaLampsTl.to('#lamp-one__container', {top: "0", duration: 0.3, ease: Power4.easeOut})
+pasticceriaGelateriaLampsTl.to('#pasticceria-gelateria h2', {opacity: 1, duration: 3, delay: 0.8, ease: Power4.easeOut})
 
 let pasticceriaGelateriaFloatingTl = gsap.timeline({
   paused: true,
@@ -600,6 +611,7 @@ shopTl.to('#scarpa-one__container', {top: "27%", left: "4%", duration: 2.6, ease
 shopTl.to('#scarpa-two__container', {top: "3%", left: "4%", duration: 2.6, ease: Power4.easeOut}, "<")
 shopTl.to('#coniglio__container', {top: "0%", right: "0%", duration: 2.6, ease: Power4.easeOut}, "<")
 shopTl.to('#moto__container', {right: "0%", duration: 2.6, ease: Power4.easeOut}, "<")
+shopTl.to('#shop h2', {opacity: 1, duration: 3, delay: 0.8, ease: Power4.easeOut})
 
 let areaArredoTl = gsap.timeline({
   scrollTrigger: {
@@ -633,10 +645,11 @@ areaArredoScrollTl.to('#scarpa-two', {y: "-=85%", duration: 1, ease: Power4.ease
 areaArredoScrollTl.to('#coniglio', {y: "-=65%", duration: 1, ease: Power4.easeOut}, '<')
 
 areaArredoTl.to('#coniglio-arearredo__container', {top: "0", left: "2%", duration: 3, ease: Power4.easeOut}, '<')
-areaArredoTl.fromTo('#divano', {y: '-=130', autoAlpha: 0}, {y: '0', autoAlpha: 1, duration: 2, ease: Elastic.easeInOut})
-areaArredoTl.to('#cassaforte__container', {right: '-3%', duration: 2, ease: Elastic.easeInOut})
+areaArredoTl.fromTo('#divano', {y: '-=130', autoAlpha: 0}, {y: '0', autoAlpha: 1, duration: 1, ease: Elastic.easeInOut})
+areaArredoTl.to('#cassaforte__container', {right: '-3%', duration: 1, ease: Elastic.easeInOut}, '<+=1')
 areaArredoTl.to('#frame__container', {top: "0", right: "2%", duration: 0.6, ease: Power4.easeOut})
 areaArredoTl.to('#lamp-conluce__container', {opacity: 1, duration: 2, ease: Elastic.easeInOut}, '<')
+areaArredoTl.to('#arearredo h2', {opacity: 1, duration: 3, delay: 0.8, ease: Power4.easeOut})
 
 $('#zodiac-wrapper a').click(function(event) {
   console.log('clickj')

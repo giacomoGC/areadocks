@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Engravers bold";
+  src:
+    url("../fonts/EngraversBold.ttf");
+}
+
 body {
   margin: 0;
   background-color: black;
@@ -7,6 +13,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0;
   color: white;
+}
+
+h1, h2, h3, h4, h5, h6, a, p, li, button {
+  font-family: 'Engravers bold';
+}
+
+h2 {
+  font-size: 50px;
 }
 
 .uppercase {
@@ -313,7 +327,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 55px;
   margin-bottom: 50px;
   position: relative;
-  z-index: 35;
+  z-index: 55;
+  opacity: 0;
 }
 
 #loftRestaurant #knifeandhat {
@@ -454,6 +469,14 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
 }
 
+#pizza .pizza-tagliere-wrapper h2 {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  opacity: 0;
+  z-index: 55;
+}
+
 #pizza #tagliere {
   width: 51%;
   max-width: 800px;
@@ -519,6 +542,17 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   display: flex;
   z-index: 30;
+}
+
+#oriental {
+  align-items: center;
+  justify-content: center;
+}
+
+#oriental h2 {
+  opacity: 0;
+  position: relative;
+  z-index: 55;
 }
 
 #ventagli {
@@ -673,6 +707,16 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
+#secondaclasse__main {
+  justify-content: center;
+}
+
+#secondaclasse__main .secondaclasse-text {
+  width: 100%;
+  max-width: 53%;
+  opacity: 0;
+}
+
 #secondaclasse__railway #bistecca-left {
   position: absolute;
   width: 30%;
@@ -714,7 +758,7 @@ h1, h2, h3, h4, h5, h6 {
 #bistecca-bottomright {
   position: absolute;
   height: 37%;
-  top: -10%;
+  top: 32%;
   right: -18vH;
 }
 
@@ -788,7 +832,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #boutique-hotel {
- 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #boutique-hotel #horse_1 {
@@ -843,12 +889,21 @@ h1, h2, h3, h4, h5, h6 {
   height: 36%;
 }
 
+#boutique-hotel h2 {
+  opacity: 0;
+  position: relative;
+  z-index: 55;
+}
+
 #pasticceria-gelateria {
   height: 100vH;
   width: 100%;
   overflow: visible;
   position: relative;
   z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #lamp-one__container {
@@ -917,12 +972,21 @@ h1, h2, h3, h4, h5, h6 {
   height: 30%;
 }
 
+#pasticceria-gelateria h2 {
+  opacity: 0;
+  position: relative;
+  z-index: 55;
+}
+
 #shop {
   background-image:  url('../../assets/images/shop-bg.jpg');
   background-size: cover;
   background-position: bottom;
   position: relative;
   z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #luci__container {
@@ -988,11 +1052,20 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
 }
 
+#shop h2 {
+  opacity: 0;
+  position: relative;
+  z-index: 55;
+}
+
 #arearredo {
   background-image:  url('../../assets/images/arearredo-bg.png');
   background-size: cover;
   background-position: bottom;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #divano__container {
@@ -1043,4 +1116,10 @@ h1, h2, h3, h4, h5, h6 {
 
 #lamp-conluce__container {
   opacity: 0;
+}
+
+#arearredo h2 {
+  opacity: 0;
+  position: relative;
+  z-index: 55;
 }
