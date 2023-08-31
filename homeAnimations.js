@@ -266,11 +266,11 @@ loftRestaurant__bg_gradientTl.to('#loftRestaurant__bg-black-gradient', {opacity:
 let pizzaSliceOneTimeline = gsap.timeline({repeat: -1});
 let pizzaSliceTwoTimeline = gsap.timeline({repeat: -1});
 
-pizzaSliceOneTimeline.to('#pizza-slice_1', {y: "-=30", rotate: `-=2`, duration: 2, ease: Sine.easeInOut})
-pizzaSliceOneTimeline.to('#pizza-slice_1', {y: "+=30", rotate: `+=2`, duration: 2, ease: Sine.easeInOut})
+pizzaSliceOneTimeline.to('#pizza-slice_7', {y: "-=30", rotate: `-=2`, duration: 2, ease: Sine.easeInOut})
+pizzaSliceOneTimeline.to('#pizza-slice_7', {y: "+=30", rotate: `+=2`, duration: 2, ease: Sine.easeInOut})
 
-pizzaSliceTwoTimeline.to('#pizza-slice_4', {y: "-=30", rotate: `-=3`, duration: 2.5, ease: Sine.easeInOut})
-pizzaSliceTwoTimeline.to('#pizza-slice_4', {y: "+=30", rotate: `+=3`, duration: 2.5, ease: Sine.easeInOut})
+pizzaSliceTwoTimeline.to('#pizza-slice_8', {y: "-=30", rotate: `-=3`, duration: 2.5, ease: Sine.easeInOut})
+pizzaSliceTwoTimeline.to('#pizza-slice_8', {y: "+=30", rotate: `+=3`, duration: 2.5, ease: Sine.easeInOut})
 
 let pizzaTl = gsap.timeline({
   scrollTrigger: {
@@ -279,14 +279,16 @@ let pizzaTl = gsap.timeline({
   },
 })
 
-pizzaTl.to('#pizza-slice_1', {x: "+=45%", y: "+=28%", duration: 2, delay: 3, ease: Power4.easeOut})
+pizzaTl.to('#pizza-slice_1', {x: "+=110%", y: "+=28%", duration: 2, delay: 3, ease: Power4.easeOut})
 pizzaTl.add(pizzaSliceOneTimeline, '<')
 pizzaTl.to('#pizza-slice_2', {x: "+=120%", y: "+=0000", autoAlpha: 0, duration: 2, ease: Power4.easeOut}, '<')
-pizzaTl.to('#pizza-slice_3', {x: "+=0000", y: "-=100%", autoAlpha: 0, duration: 2, ease: Power4.easeOut}, '<')
-pizzaTl.to('#pizza-slice_4', {x: "-=48%", y: "-=0000", duration: 2, ease: Power4.easeOut}, '<')
+pizzaTl.to('#pizza-slice_3', {x: "+=000", y: "-=100%", autoAlpha: 0, duration: 2, ease: Power4.easeOut}, '<')
+pizzaTl.to('#pizza-slice_4', {x: "-=110%", y: "-=0000", duration: 2, ease: Power4.easeOut}, '<')
 pizzaTl.add(pizzaSliceTwoTimeline, '<')
-pizzaTl.to('#pizza-slice_5', {x: "-=70%", y: "+=100%", autoAlpha: 0, duration: 2, ease: Power4.easeOut}, '<')
+pizzaTl.to('#pizza-slice_5', {x: "-=130%", y: "+=100%", autoAlpha: 0, duration: 2, ease: Power4.easeOut}, '<')
 pizzaTl.to('#pizza-slice_6', {x: "+=5%", y: "+=100%", autoAlpha: 0, duration: 2, ease: Power4.easeOut}, '<')
+pizzaTl.to('#pizza-slice_7', {left: "-38%", top: "20%", autoAlpha: 1, duration: 2, ease: Power4.easeOut})
+pizzaTl.to('#pizza-slice_8', {left: "92%", top: "47%", autoAlpha: 1, duration: 2, ease: Power4.easeOut}, '<')
 pizzaTl.to('#pizza #tagliere', {x: "-115%", y: "-20%", scale: "1.3", duration: 2, ease: Power4.easeOut})
 pizzaTl.fromTo('#pizza #pizza-cheft-hat__img', {x: "+=20", y: "+=5", opacity: 0}, {x: "0", y: "0", opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=0.3')
 pizzaTl.fromTo('#cactus__img', {y: "+=200", opacity: 0}, {y: "0", opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=0.3')
