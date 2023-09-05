@@ -21,26 +21,27 @@ let hatTimeline = gsap.timeline({repeat: -1});
 let isScrolling = false;
 
 // Initial "flash"
-introTimeline.fromTo("#introAnimation-wrapper__logo", {opacity: 0.7}, {opacity: 1, duration: 0.7, ease: Power3.easeIn});
+introTimeline.fromTo("#introAnimation-wrapper__logo", {opacity: 0.6}, {opacity: 1, duration: 0.5, ease: Power3.easeIn});
 
 // First full "flash"
-introTimeline.to("#introAnimation-wrapper__logo", {opacity: 0, duration: 0.3, delay: 0.4, ease: Power3.easeIn});
-introTimeline.to("#introAnimation-wrapper__logo", {opacity: 1, duration: 0.3, ease: Power3.easeIn});
+introTimeline.to("#introAnimation-wrapper__logo", {opacity: 0, duration: 0.25, delay: 0.4, ease: Power3.easeIn});
+introTimeline.to("#introAnimation-wrapper__logo", {opacity: 1, duration: 0.25, ease: Power3.easeIn});
 
 // Wait a bit, then second "flash"
-introTimeline.to("#introAnimation-wrapper__logo", {opacity: 0, duration: 0.4, delay: 0.2, ease: Power3.easeIn});
+introTimeline.to("#introAnimation-wrapper__logo", {opacity: 0, duration: 0.3, delay: 0.1, ease: Power3.easeIn});
 
-introTimeline.to("#introAnimation-wrapper__logo", {opacity: 0.6, duration: 3, delay: 0.4, ease: Power4.easeOut});
-introTimeline.to("#introAnimation-wrapper__black-bg", {autoAlpha: 0, duration: 3, ease: Power4.easeOut}, "<");
-introTimeline.to("#hero__bg-first", {opacity: 1, duration: 3, ease: Power4.easeOut}, "<");
+introTimeline.to("#introAnimation-wrapper__logo", {opacity: 0.6, duration: 2, delay: 0.4, ease: Power4.easeOut});
+introTimeline.to("#introAnimation-wrapper__black-bg", {autoAlpha: 0, duration: 2, ease: Power4.easeOut}, "<");
+introTimeline.to("#hero__bg-first", {opacity: 1, duration: 1.5, ease: Power4.easeOut}, "<");
 
-introTimeline.to("#introAnimation-wrapper__logo", {duration: 2.25, delay: 1, ease: Power3.easeOut, autoAlpha: 0, scale: 10});
+introTimeline.to("#introAnimation-wrapper__logo", {duration: 1.5, delay: 0.3, ease: Power3.easeOut, autoAlpha: 0, scale: 10});
 
-introTimeline.to(".introAnimation-wrapper", {duration: 0.001, autoAlpha: 0});
-introTimeline.to(".introAnimation-wrapper .logo-container", {duration: 0.001, autoAlpha: 0});
+introTimeline.fromTo("#hero__world__img", {yPercent: 35}, {duration: 2, ease: Power3.easeOut, opacity: 0.84, yPercent: 1}, '<');
 
-introTimeline.fromTo("#hero__world__img", {yPercent: 35}, {duration: 2.5, delay: -2.25, ease: Power3.easeOut, opacity: 0.84, yPercent: 1});
-introTimeline.from("#hero__main-title", {duration: 2, delay: 0.1 ,ease: Power4.easeOut, opacity: 0, y: "25vH", scale: 0.5}, "<");
+introTimeline.to(".introAnimation-wrapper", {duration: 0.001, autoAlpha: 0}, '<');
+introTimeline.to(".introAnimation-wrapper .logo-container", {duration: 0.001, autoAlpha: 0}, '<');
+
+// introTimeline.from("#hero__main-title", {duration: 2, ease: Power4.easeOut, opacity: 0, y: "25vH", scale: 0.5}, "<");
 
 introTimeline.add(function() { 
   const worldImageWidth = $('#hero__world__img').width();
@@ -51,28 +52,24 @@ introTimeline.add(function() {
   else {
     $('#zodiac-wrapper').css('width', '100%')
   }
+}, "<")
 
-  // $('.scrollSectionsAfterHero').css('display', 'block');
-  // $('#hero').css('padding-right', '0');
-  // $('#hero').css('width', '100%');
-})
-
-introTimeline.to("#zodiac-wrapper", {duration: 1.5, delay: 0, ease: Power3.easeInOut, autoAlpha: 1, bottom: 0, scale: 1});
+introTimeline.to("#zodiac-wrapper", {duration: 1.5, delay: 0, ease: Power3.easeInOut, autoAlpha: 1, bottom: 0, scale: 1}, '<+=0.5');
 introTimeline.to("#hero__luna__img", {duration: 1.5, delay: 0, ease: Power3.easeInOut, left: '5%'}, '<+=0.3');
 
 masterTimeline.add(introTimeline);
 
 $(document).ready(function() {
   masterTimeline.play();
-  gsap.to("#leaves .leaves__img:nth-child(8)", {rotation:"7_short", duration: 6, repeat: -1, yoyo: true, delay: 0.1, ease: Elastic.easeOut});
-  gsap.to("#leaves .leaves__img:nth-child(7)", {rotation:"356_short", duration: 6, repeat: -1, yoyo: true, delay: 0.1, ease: Elastic.easeOut});
-  gsap.to("#leaves .leaves__img:nth-child(6)", {rotation:"355_short", duration: 6, repeat: -1, yoyo: true, delay: 0.1, ease: Elastic.easeOut});
+  gsap.to("#leaves .leaves__img:nth-child(8)", {rotation:"7_short", duration: 6, repeat: -1, yoyo: true, ease: Elastic.easeOut});
+  gsap.to("#leaves .leaves__img:nth-child(7)", {rotation:"356_short", duration: 6, repeat: -1, yoyo: true, ease: Elastic.easeOut});
+  gsap.to("#leaves .leaves__img:nth-child(6)", {rotation:"355_short", duration: 6, repeat: -1, yoyo: true, ease: Elastic.easeOut});
 
-  gsap.to("#leaves .leaves__img:nth-child(5)", {rotation:"353_short", duration: 6, repeat: -1, yoyo: true, delay: 0.1, ease: Elastic.easeOut});
+  gsap.to("#leaves .leaves__img:nth-child(5)", {rotation:"353_short", duration: 6, repeat: -1, yoyo: true, ease: Elastic.easeOut});
 
-  gsap.to("#leaves .leaves__img:nth-child(4)", {rotation:"6_short", duration: 6, repeat: -1, yoyo: true, delay: 0.1, ease: Elastic.easeOut});
-  gsap.to("#leaves .leaves__img:nth-child(3)", {rotation:"7_short", duration: 6, repeat: -1, yoyo: true, delay: 0.1, ease: Elastic.easeOut});
-  gsap.to("#leaves .leaves__img:nth-child(2)", {rotation:"357_short", duration: 6, repeat: -1, yoyo: true, delay: 0.1, ease: Elastic.easeOut});
+  gsap.to("#leaves .leaves__img:nth-child(4)", {rotation:"6_short", duration: 6, repeat: -1, yoyo: true, ease: Elastic.easeOut});
+  gsap.to("#leaves .leaves__img:nth-child(3)", {rotation:"7_short", duration: 6, repeat: -1, yoyo: true, ease: Elastic.easeOut});
+  gsap.to("#leaves .leaves__img:nth-child(2)", {rotation:"357_short", duration: 6, repeat: -1, yoyo: true, ease: Elastic.easeOut});
 
   knifeTimeline.to('#loftRestaurant #knifeandhat .knife', {y: "-=30", rotate: `-=5`, duration: 2, ease: Sine.easeInOut})
   knifeTimeline.to('#loftRestaurant #knifeandhat .knife', {y: "+=30", rotate: `+=5`, duration: 2, ease: Sine.easeInOut})
@@ -183,7 +180,7 @@ let loftRestaurantTl = gsap.timeline({
   },
 })
 
-loftRestaurantTl.to('#leaves .leaves__img:nth-child(2)', {x: "-130%", duration: 2, delay: 0.3, ease: Power4.easeIn})
+loftRestaurantTl.to('#leaves .leaves__img:nth-child(2)', {x: "-130%", duration: 2, ease: Power4.easeIn})
 loftRestaurantTl.to('#leaves .leaves__img:nth-child(3)', {x: "-130%", duration: 2.2, ease: Power4.easeIn}, '<')
 loftRestaurantTl.to('#leaves .leaves__img:nth-child(4)', {x: "-130%", duration: 1.9, ease: Power4.easeIn}, '<')
 loftRestaurantTl.to('#leaves .leaves__img:nth-child(5)', {x: "-130%", duration: 1.6, ease: Power4.easeIn}, '<')
@@ -194,10 +191,10 @@ loftRestaurantTl.to('#leaves .leaves__img:nth-child(8)', {x: "130%", duration: 2
 
 loftRestaurantTl.to('#leaves .leaves-bg', {opacity: 0, duration: 1.7, ease: Power4.easeIn}, '<')
 
-loftRestaurantTl.fromTo('#loftRestaurant .crystal-wrapper img',{y: "-110%"}, {y: "0", duration: 2.25, delay: 0.3, ease: Power4.easeOut})
-loftRestaurantTl.to('#loftRestaurant .crystal-zodiac-wrapper__noglow-img', {opacity: 1, duration: 0.3, ease: Power4.easeIn})
-loftRestaurantTl.fromTo('#loftRestaurant .crystal-zodiac-wrapper__main-img', {opacity: 0}, {opacity: 1, duration: 2, ease: Elastic.easeIn.config(2, 0.3)}, "<")
-loftRestaurantTl.to('#loftRestaurant h2', {opacity: 1, duration: 3, delay: 0.4, ease: Power4.easeOut})
+loftRestaurantTl.fromTo('#loftRestaurant .crystal-wrapper img', {y: "-110%"}, {y: "0", duration: 1.5, ease: Power4.easeOut})
+loftRestaurantTl.to('#loftRestaurant .crystal-zodiac-wrapper__noglow-img', {opacity: 1, duration: 0.6, ease: Power4.easeIn}, '<+=0.5')
+loftRestaurantTl.fromTo('#loftRestaurant .crystal-zodiac-wrapper__main-img', {opacity: 0}, {opacity: 1, duration: 1.75, ease: Elastic.easeIn.config(2, 0.3)}, "<")
+loftRestaurantTl.to('#loftRestaurant h2', {opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=1')
 
 let leavesRevealTl = gsap.timeline({
   scrollTrigger:{
@@ -279,7 +276,7 @@ let pizzaTl = gsap.timeline({
   },
 })
 
-pizzaTl.to('#pizza-slice_1', {x: "+=110%", y: "+=28%", duration: 2, delay: 3, ease: Power4.easeOut})
+pizzaTl.to('#pizza-slice_1', {x: "+=110%", y: "+=28%", duration: 1.5, delay: 2, ease: Power4.easeOut})
 pizzaTl.add(pizzaSliceOneTimeline, '<')
 pizzaTl.to('#pizza-slice_2', {x: "+=120%", y: "+=0000", autoAlpha: 0, duration: 2, ease: Power4.easeOut}, '<')
 pizzaTl.to('#pizza-slice_3', {x: "+=000", y: "-=100%", autoAlpha: 0, duration: 2, ease: Power4.easeOut}, '<')
@@ -287,12 +284,12 @@ pizzaTl.to('#pizza-slice_4', {x: "-=110%", y: "-=0000", duration: 2, ease: Power
 pizzaTl.add(pizzaSliceTwoTimeline, '<')
 pizzaTl.to('#pizza-slice_5', {x: "-=130%", y: "+=100%", autoAlpha: 0, duration: 2, ease: Power4.easeOut}, '<')
 pizzaTl.to('#pizza-slice_6', {x: "+=5%", y: "+=100%", autoAlpha: 0, duration: 2, ease: Power4.easeOut}, '<')
-pizzaTl.to('#pizza-slice_7', {left: "-38%", top: "20%", autoAlpha: 1, duration: 2, ease: Power4.easeOut})
+pizzaTl.to('#pizza-slice_7', {left: "-38%", top: "20%", autoAlpha: 1, duration: 2, ease: Power4.easeOut}, '<+=1')
 pizzaTl.to('#pizza-slice_8', {left: "92%", top: "47%", autoAlpha: 1, duration: 2, ease: Power4.easeOut}, '<')
-pizzaTl.to('#pizza #tagliere', {x: "-115%", y: "-20%", scale: "1.3", duration: 2, ease: Power4.easeOut})
+pizzaTl.to('#pizza #tagliere', {x: "-115%", y: "-20%", scale: "1.3", duration: 2, ease: Power4.easeOut}, '<+=0.5')
 pizzaTl.fromTo('#pizza #pizza-cheft-hat__img', {x: "+=20", y: "+=5", opacity: 0}, {x: "0", y: "0", opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=0.3')
 pizzaTl.fromTo('#cactus__img', {y: "+=200", opacity: 0}, {y: "0", opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=0.3')
-pizzaTl.to('#pizza .pizza-tagliere-wrapper h2', {opacity: 1, duration: 3, delay: 0.2, ease: Power4.easeOut})
+pizzaTl.to('#pizza .pizza-tagliere-wrapper h2', {opacity: 1, duration: 2, delay: 0.2, ease: Power4.easeOut})
 
 // Pizza parallax
 
@@ -373,7 +370,7 @@ let ventagliSlideOutTimeline = gsap.timeline({
       trigger:'#oriental',
       start:"top top+=10px",
   },
-  delay: 2,
+  delay: 0.3,
 })
 
 ventagliSlideOutTimeline.to('#ventagli-oriental__wrapper #cactus__img', {left: "-140%", duration: 1.36, ease: Power4.easeOut})
@@ -388,7 +385,7 @@ ventagliSlideOutTimeline.to('#parasol_8', {right: "+100%", duration: 3.4, ease: 
 ventagliSlideOutTimeline.to('#parasol_9', {left: "+100%", duration: 3.5, ease: Power4.easeOut}, '<')
 ventagliSlideOutTimeline.to('#samurai-mask', {left: "-16%", duration: 1, ease: Power4.easeOut}, '<+=2')
 ventagliSlideOutTimeline.to('#north-bottom-right-fan', {right: "-19%", duration: 1, ease: Power4.easeOut}, '<')
-ventagliSlideOutTimeline.to('#oriental h2', {opacity: 1, duration: 3, delay: 0.8, ease: Power4.easeOut})
+ventagliSlideOutTimeline.to('#oriental h2', {opacity: 1, duration: 3, ease: Power4.easeOut}, '<+=0.5')
 
 // Seconda classe
 
@@ -408,7 +405,7 @@ let trainTl = gsap.timeline({
   }, 
 })
 
-trainTl.to("#train", {left: "-3000px", duration: 9, ease: 'none'});
+trainTl.to("#train", {left: "-3000px", duration: 5, ease: 'none'});
 trainTl.add(function() {
   goToSection(5)
 })
@@ -480,8 +477,8 @@ rosesTl.add(function() {
   paperellaRightTl.to('#paperella_dx', {bottom: "+=2%", rotate: `+=0.4`, duration: 2, ease: Sine.easeInOut})
 })
 
-rosesTl.to('#hotel_acceso', {opacity: 1, duration: 2.2, ease: Elastic.easeIn.config(2, 0.3)})
-rosesTl.to('#boutique-hotel h2', {opacity: 1, duration: 3, delay: 0.8, ease: Power4.easeOut})
+rosesTl.to('#hotel_acceso', {opacity: 1, duration: 2, ease: Elastic.easeIn.config(2, 0.3)})
+rosesTl.to('#boutique-hotel h2', {opacity: 1, duration: 3, delay: 0.2, ease: Power4.easeOut})
 
 let boutiqueHotelTl = gsap.timeline({
   scrollTrigger: {
