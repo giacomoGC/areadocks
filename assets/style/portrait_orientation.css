@@ -81,6 +81,10 @@
   #pizza .pizza-slices {
     width: 71%;
   }
+  .pizza-cactus img {
+    top: -34%;
+    height: 59%;
+  }
   #ventaglio_1 {
     right: 0;
     height: 67%;
@@ -116,7 +120,7 @@
     position: absolute;
     left: -41%;
     bottom: -17%;
-    width: 100%;
+    width: 93%;
   }
   #umbrella {
     height: 43%;
@@ -129,7 +133,7 @@
     position: absolute;
     right: -44%;
     bottom: -21%;
-    width: 100%;
+    width: 94%;
   }
   #secondaclasse__railway #bistecca-left {
     width: 77%;
@@ -147,9 +151,17 @@
     right: -18vH;
     width: 78%;
   }
+  #bistecca-topright {
+    height: auto;
+    top: 65%;
+    width: 66%;
+  }
+  #secondaclasse__main .secondaclasse-text {
+    max-width: 71%;
+  }
   #hotel_spento, #hotel_acceso {
     right: -16vH;
-    height: 87%;
+    height: 102%;
   }
   .boutique-hotel__paperelle #paperella_sx {
     height: 33%;
@@ -200,5 +212,15 @@
   }
   #manichino__container {
     height: 55%;
+  }
+  #divano__container {
+    height: 53%;
+  }
+  #bamboo-container {
+    height: 73%;
+    left: -47%;
+  }
+  #cassaforte__container {
+    height: 33%;
   }
 }

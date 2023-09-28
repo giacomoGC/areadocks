@@ -3,12 +3,12 @@
 //opacity 0.1
 //opacity 1 + sky bg
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, Observer);
 
 const smoother = ScrollSmoother.create({
-  smooth: 1,               // how long (in seconds) it takes to "catch up" to the native scroll position
-  effects: true,           // looks for data-speed and data-lag attributes on elements
-  smoothTouch: 0.1,        // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
+  smooth: 1,
+  effects: true,
+  smoothTouch: 0.1,
 });
 
 let masterTimeline = gsap.timeline({});
@@ -28,18 +28,19 @@ introTimeline.to("#introAnimation-wrapper__logo", {opacity: 0, duration: 0.25, d
 introTimeline.to("#introAnimation-wrapper__logo", {opacity: 1, duration: 0.25, ease: Power3.easeIn});
 
 // Wait a bit, then second "flash"
-introTimeline.to("#introAnimation-wrapper__logo", {opacity: 0, duration: 0.3, delay: 0.1, ease: Power3.easeIn});
+introTimeline.to("#introAnimation-wrapper__logo", {opacity: 0, duration: 0.4, ease: Power3.easeIn});
 
-introTimeline.to("#introAnimation-wrapper__logo", {opacity: 0.6, duration: 2, delay: 0.4, ease: Power4.easeOut});
+introTimeline.to("#introAnimation-wrapper__logo", {opacity: 0.6, duration: 2, delay: 0.1, ease: Power4.easeOut});
 introTimeline.to("#introAnimation-wrapper__black-bg", {autoAlpha: 0, duration: 2, ease: Power4.easeOut}, "<");
-introTimeline.to("#hero__bg-first", {opacity: 1, duration: 1.5, ease: Power4.easeOut}, "<");
+introTimeline.to("#hero__bg-first", {opacity: 1, duration: 1, ease: Power4.easeOut}, "<");
 
-introTimeline.to("#introAnimation-wrapper__logo", {duration: 1.5, delay: 0.3, ease: Power3.easeOut, autoAlpha: 0, scale: 10});
+introTimeline.to("#introAnimation-wrapper__logo", {duration: 1.75, delay: 0.3, ease: Power3.easeOut, autoAlpha: 0, scale: 10});
 
-introTimeline.fromTo("#hero__world__img", {yPercent: 35}, {duration: 2, ease: Power3.easeOut, opacity: 0.84, yPercent: 1}, '<');
+introTimeline.to(".introAnimation-wrapper", {duration: 0.001, autoAlpha: 0});
+introTimeline.to(".introAnimation-wrapper .logo-container", {duration: 0.001, autoAlpha: 0});
 
-introTimeline.to(".introAnimation-wrapper", {duration: 0.001, autoAlpha: 0}, '<');
-introTimeline.to(".introAnimation-wrapper .logo-container", {duration: 0.001, autoAlpha: 0}, '<');
+introTimeline.fromTo("#hero__world__img", {yPercent: 35}, {duration: 2, ease: Power3.easeOut, opacity: 0.84, yPercent: 1});
+
 
 // introTimeline.from("#hero__main-title", {duration: 2, ease: Power4.easeOut, opacity: 0, y: "25vH", scale: 0.5}, "<");
 
@@ -56,6 +57,7 @@ introTimeline.add(function() {
 
 introTimeline.to("#zodiac-wrapper", {duration: 1.5, delay: 0, ease: Power3.easeInOut, autoAlpha: 1, bottom: 0, scale: 1}, '<+=0.5');
 introTimeline.to("#hero__luna__img", {duration: 1.5, delay: 0, ease: Power3.easeInOut, left: '5%'}, '<+=0.3');
+introTimeline.to("#home-nav", {autoAlpha: 1, duration: 1, ease: Power3.easeInOut}, '<+=0.3');
 
 masterTimeline.add(introTimeline);
 
@@ -105,44 +107,62 @@ const scrolling = {
 }
 
 const firstElem = document.querySelector("section");
+let idx = 0
 
-function goToSection(i, anim) {
-  if(isScrolling === false) {
+function goToSection(i, direction) {
+  if(scrolling.enabled) {
     isScrolling = true;
 
+    if(direction === 'down') {
+      if(idx < 10) {
+        idx++
+      }
+
+      if(idx === 5) {
+        idx++
+      }
+    }
+    else {
+      if(idx >= 0) {
+        idx--
+      }
+      if(idx === 5) {
+        idx--
+      }
+    }
+    console.log(idx)
+
     gsap.to(window, {
-      scrollTo: {y: i*innerHeight + firstElem.offsetTop, autoKill: false},
+      scrollTo: {y: idx*innerHeight + firstElem.offsetTop, autoKill: false},
       duration: 2,
       ease: Power4.EaseOut,
       onStart: scrolling.disable(),
       onComplete: function() {
         scrolling.enable();
         isScrolling = false; 
+
       },
     });
   }
-
-  // if(anim) {
-  //   anim.restart();
-  // }
 }
 
-gsap.utils.toArray("section").forEach((panel, i) => {
-  ScrollTrigger.create({
-    trigger: panel,
-    onEnter: function() {
-      if(isScrolling === false) {
-        goToSection(i)
-      }
-    },
-  });
-  
-  // ScrollTrigger.create({
-  //   trigger: panel,
-  //   start: "bottom bottom",
-  //   onEnterBack: () => goToSection(i),
-  // });
+let sections = document.querySelectorAll("section"),
+  wrap = gsap.utils.wrap(0, sections.length),
+  animating;
+
+Observer.create({
+  type: "wheel,touch,pointer",
+  wheelSpeed: -1,
+  onDown: function() {
+    !animating && goToSection(idx, direction = 'up')
+  },
+  onUp: function() {
+    !animating && goToSection(idx, direction = 'down')
+  },
+  tolerance: 10,
+  preventDefault: true
 });
+
 
 function scrollToAnchor(section, event) {
   event.preventDefault()
@@ -159,9 +179,6 @@ function scrollToAnchor(section, event) {
       onComplete: function() {
         scrolling.enable();
         isScrolling = false; 
-        // setTimeout(function() {
-        //   ScrollTrigger.refresh()
-        // }, 1000)
       },
     });
   }
@@ -175,9 +192,20 @@ function generateRandomFromRange(max) {
 
 let loftRestaurantTl = gsap.timeline({
   scrollTrigger:{
-      trigger:'#loftRestaurant',
-      start:"top top+=10px",
+    trigger:'#loftRestaurant',
+    start:"top center",
+    scrub: false,
+    onEnter: function() {
+      loftRestaurantTl.play()
+    },
+    onEnterBack: function() {
+      loftRestaurantTl.play()
+    },
+    onLeave: function() {
+      //loftRestaurantTl.reverse()
+    }
   },
+  paused: true,
 })
 
 loftRestaurantTl.to('#leaves .leaves__img:nth-child(2)', {x: "-130%", duration: 2, ease: Power4.easeIn})
@@ -194,41 +222,8 @@ loftRestaurantTl.to('#leaves .leaves-bg', {opacity: 0, duration: 1.7, ease: Powe
 loftRestaurantTl.fromTo('#loftRestaurant .crystal-wrapper img', {y: "-110%"}, {y: "0", duration: 1.5, ease: Power4.easeOut})
 loftRestaurantTl.to('#loftRestaurant .crystal-zodiac-wrapper__noglow-img', {opacity: 1, duration: 0.6, ease: Power4.easeIn}, '<+=0.5')
 loftRestaurantTl.fromTo('#loftRestaurant .crystal-zodiac-wrapper__main-img', {opacity: 0}, {opacity: 1, duration: 1.75, ease: Elastic.easeIn.config(2, 0.3)}, "<")
+loftRestaurantTl.to('#loftRestaurant .ambient-light', {opacity: 1, duration: 0.5, ease: Elastic.easeIn.config(2, 0.3)}, '<+=1')
 loftRestaurantTl.to('#loftRestaurant h2', {opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=1')
-
-let leavesRevealTl = gsap.timeline({
-  scrollTrigger:{
-      trigger:'#loftRestaurant',
-      start:"top top+=10px",
-  },
-})
-
-let loftRestaurantParallaxTl = gsap.timeline({
-  scrollTrigger: {
-      trigger:'#pizza',
-      start:"top bottom",
-      scrub: false,
-      pin: false,
-      // pinSpacer: false,
-      onEnter: function() {
-        loftRestaurantParallaxTl.play()
-      },
-      onLeaveBack: function() {
-        loftRestaurantParallaxTl.reverse()
-      }
-  },
-  // onStart: function() {
-
-  // },
-  // onComplete: function() {
-
-  // },
-  paused: true,
-})
-
-loftRestaurantParallaxTl.to('#knifeandhat', {top: "+=15%", duration: 2.6, ease: Power4.easeOut})
-loftRestaurantParallaxTl.to('#loftRestaurant h2', {top: "+=11%", duration: 2.6, ease: Power4.easeOut}, '<')
-loftRestaurantParallaxTl.to('.crystal-zodiac-wrapper', {top: "+=11%", duration: 2.6, ease: Power4.easeOut}, '<')
 
 // Pizza + North
 
@@ -272,8 +267,15 @@ pizzaSliceTwoTimeline.to('#pizza-slice_8', {y: "+=30", rotate: `+=3`, duration: 
 let pizzaTl = gsap.timeline({
   scrollTrigger: {
       trigger:'#pizza',
-      start:"top bottom-=10px",
+      start:"top bottom+=1",
+      onEnter: function() {
+        pizzaTl.play()
+        const smokeVideo = jQuery('#smoke-overlay video');
+        smokeVideo.prop('preload','auto');
+        smokeVideo.trigger('play');
+      },
   },
+  paused: true,
 })
 
 pizzaTl.to('#pizza-slice_1', {x: "+=110%", y: "+=28%", duration: 1.5, delay: 2, ease: Power4.easeOut})
@@ -288,7 +290,7 @@ pizzaTl.to('#pizza-slice_7', {left: "-38%", top: "20%", autoAlpha: 1, duration: 
 pizzaTl.to('#pizza-slice_8', {left: "92%", top: "47%", autoAlpha: 1, duration: 2, ease: Power4.easeOut}, '<')
 pizzaTl.to('#pizza #tagliere', {x: "-115%", y: "-20%", scale: "1.3", duration: 2, ease: Power4.easeOut}, '<+=0.5')
 pizzaTl.fromTo('#pizza #pizza-cheft-hat__img', {x: "+=20", y: "+=5", opacity: 0}, {x: "0", y: "0", opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=0.3')
-pizzaTl.fromTo('#cactus__img', {y: "+=200", opacity: 0}, {y: "0", opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=0.3')
+//pizzaTl.fromTo('#cactus__img', {y: "+=200", opacity: 0}, {y: "0", opacity: 1, duration: 2, ease: Power4.easeOut}, '<+=0.3')
 pizzaTl.to('#pizza .pizza-tagliere-wrapper h2', {opacity: 1, duration: 2, delay: 0.2, ease: Power4.easeOut})
 
 // Pizza parallax
@@ -296,7 +298,7 @@ pizzaTl.to('#pizza .pizza-tagliere-wrapper h2', {opacity: 1, duration: 2, delay:
 let secondStonewallBgTl = gsap.timeline({
   scrollTrigger: {
     trigger:'#pizza .bg-blue-stonewall',
-    start:"bottom bottom-=10px",
+    start:"bottom bottom",
     end: '+=100%',
     scrub: 0,
     pin: true,
@@ -305,12 +307,12 @@ let secondStonewallBgTl = gsap.timeline({
 })
 
 secondStonewallBgTl.to('#pizza .bg-blue-stonewall', {autoAlpha: 0, ease: Power4.easeIn})
-secondStonewallBgTl.to('#ventagli-oriental__wrapper', {autoAlpha: 1, ease: Power4.easeIn}, '<')
+secondStonewallBgTl.to('#ventagli', {autoAlpha: 1, ease: Power4.easeIn}, '<')
 
 let pizza_bgBlackGradientTl = gsap.timeline({
   scrollTrigger: {
       trigger:'#pizza .bg-black-gradient',
-      start:"bottom bottom-=10px",
+      start:"bottom bottom",
       end: '+=100%',
       scrub: 0,
       pin: true,
@@ -319,32 +321,7 @@ let pizza_bgBlackGradientTl = gsap.timeline({
 })
 
 pizza_bgBlackGradientTl.to('#pizza .bg-black-gradient', {autoAlpha: 0, ease: Power4.easeIn})
-
-let pizzaParallaxTl = gsap.timeline({
-  scrollTrigger: {
-      trigger:'#ventagli-oriental__wrapper',
-      start:"top bottom",
-      scrub: false,
-      pin: false,
-      // pinSpacer: false,
-      onEnter: function() {
-        pizzaParallaxTl.play()
-      },
-      onLeaveBack: function() {
-        pizzaParallaxTl.reverse()
-      }
-  },
-  // onStart: function() {
-
-  // },
-  // onComplete: function() {
-
-  // },
-  paused: true,
-})
-
-pizzaParallaxTl.to('.pizza-chef-hat', {top: "+=15%", duration: 2.6, ease: Power4.easeOut})
-pizzaParallaxTl.to('.pizza-slices', {top: "+=11%", duration: 2.6, ease: Power4.easeOut}, '<')
+pizza_bgBlackGradientTl.to('#oriental', {autoAlpha: 1, ease: Power4.easeIn}, '<')
 
 // Ventagli
 
@@ -368,7 +345,7 @@ gsap.fromTo('#north-bottom-right-fan', {y: "+=30", rotate: `+=1`}, {y: "-=30", r
 let ventagliSlideOutTimeline = gsap.timeline({
   scrollTrigger:{
       trigger:'#oriental',
-      start:"top top+=10px",
+      start:"bottom bottom+=10px",
   },
   delay: 0.3,
 })
@@ -391,6 +368,7 @@ ventagliSlideOutTimeline.to('#oriental h2', {opacity: 1, duration: 3, ease: Powe
 
 let guitarTimeline = gsap.timeline({repeat: -1});
 let bisteccaBottomRightTimeline = gsap.timeline({repeat: -1});
+let bisteccaTopRightTimeline = gsap.timeline({repeat: -1});
 
 guitarTimeline.to('#guitar', {y: "-=30", rotate: `-=2`, duration: 2, ease: Sine.easeInOut})
 guitarTimeline.to('#guitar', {y: "+=30", rotate: `+=2`, duration: 2, ease: Sine.easeInOut})
@@ -398,26 +376,25 @@ guitarTimeline.to('#guitar', {y: "+=30", rotate: `+=2`, duration: 2, ease: Sine.
 bisteccaBottomRightTimeline.to('#bistecca-bottomright', {y: "-=30", rotate: `-=3`, duration: 2.5, ease: Sine.easeInOut})
 bisteccaBottomRightTimeline.to('#bistecca-bottomright', {y: "+=30", rotate: `+=3`, duration: 2.5, ease: Sine.easeInOut})
 
-let trainTl = gsap.timeline({
-  scrollTrigger: {
-      trigger:'#secondaclasse__railway',
-      start:"top top+=10px",
-  }, 
-})
-
-trainTl.to("#train", {left: "-3000px", duration: 5, ease: 'none'});
-trainTl.add(function() {
-  goToSection(5)
-})
+bisteccaTopRightTimeline.to('#bistecca-topright', {y: "-=30", rotate: `-=3`, duration: 3, ease: Sine.easeInOut})
+bisteccaTopRightTimeline.to('#bistecca-topright', {y: "+=30", rotate: `+=3`, duration: 3, ease: Sine.easeInOut})
 
 let secondaclasseMainTl = gsap.timeline({
   scrollTrigger: {
       trigger:'#secondaclasse__main',
-      start:"top top+=20px",
-  }, 
+      start:"top center",
+  },
+  onComplete: function() {
+    jQuery('#smoke-video').remove()
+  }
 })
 
-secondaclasseMainTl.to('#secondaclasse-text', {opacity: 1, duration: 3, delay: 0.8, ease: Power4.easeOut})
+
+secondaclasseMainTl.to("#smoke-overlay", {autoAlpha: 1, duration: 2, ease: Power4.easeInOut});
+secondaclasseMainTl.to("#secondaclasse__main", {autoAlpha: 1, duration: 0.3, ease: Power4.easeInOut});
+secondaclasseMainTl.to("#smoke-overlay", {autoAlpha: 0, duration: 2.5, ease: Power4.easeInOut});
+secondaclasseMainTl.to("#train", {left: "-3000px", duration: 5, ease: 'none'}, '<+1');
+secondaclasseMainTl.to('#secondaclasse-text', {opacity: 1, duration: 3, delay: 0.8, ease: Power4.easeOut}, '<+2')
 
 // Roses
 let isRosesTlReversing = false;
@@ -436,7 +413,7 @@ let rosesTl = gsap.timeline({
       onEnter: function() {
         rosesTl.play()
       },
-      onEnterBack: function() {
+      onLeaveBack: function() {
         //rosesTl.reverse()
       },
   },
@@ -455,30 +432,20 @@ rosesTl.to('#rosa-right', {top: "40%", duration: 2}, '<')
 rosesTl.to('#rosa-right', {rotate: "+=90", duration: 2}, '<')
 rosesTl.to('#rosa-left', {top: "7%", duration: 1, ease: Power4.easeInOut})
 rosesTl.to('#rosa-right', {top: "7%", duration: 1, ease: Power4.easeInOut}, '<')
-rosesTl.to('#horse_2', {top: "-70%", duration: 1, ease: Power4.easeInOut}, '<')
 rosesTl.to('#horse_1', {top: "-70%", duration: 1, ease: Power4.easeInOut}, '<')
+rosesTl.to('#horse_2', {top: "-70%", duration: 1, ease: Power4.easeInOut}, '<')
 
 rosesTl.to('#paperella_sx', {bottom: "10%", duration: 1, ease: Power4.easeInOut}, '<')
 rosesTl.to('#paperella_dx', {bottom: "13%", duration: 1, ease: Power4.easeInOut}, '<')
 
-rosesTl.add(function() {
-  horseLeftTl.to('#horse_2', {top: "+=3%", duration: 2, ease: Sine.easeInOut})
-  horseLeftTl.to('#horse_2', {top: "-=3%", duration: 2, ease: Sine.easeInOut})
-  
-  horseRightTl.to('#horse_1', {top: "+=4%", duration: 2, ease: Sine.easeInOut})
-  horseRightTl.to('#horse_1', {top: "-=4%", duration: 2, ease: Sine.easeInOut})
-})
+gsap.to('#horse_1', {y: "+=3%", duration: 2, ease: Sine.easeInOut, yoyo: true, repeat: -1})
+gsap.to('#horse_2', {y: "+=3%", duration: 2, ease: Sine.easeInOut, yoyo: true, repeat: -1})
 
-rosesTl.add(function() {
-  paperellaLeftTl.to('#paperella_sx', {bottom: "-=3%", rotate: `-=0.2`, duration: 2, ease: Sine.easeInOut})
-  paperellaLeftTl.to('#paperella_sx', {bottom: "+=3%", rotate: `+=0.2`, duration: 2, ease: Sine.easeInOut})
-  
-  paperellaRightTl.to('#paperella_dx', {bottom: "-=2%", rotate: `-=0.4`, duration: 2, ease: Sine.easeInOut})
-  paperellaRightTl.to('#paperella_dx', {bottom: "+=2%", rotate: `+=0.4`, duration: 2, ease: Sine.easeInOut})
-})
+gsap.to('#paperella_dx', {y: "+=3%", duration: 2, ease: Sine.easeInOut, yoyo: true, repeat: -1})
+gsap.to('#paperella_sx', {y: "+=3%", duration: 2, ease: Sine.easeInOut, yoyo: true, repeat: -1})
 
-rosesTl.to('#hotel_acceso', {opacity: 1, duration: 2, ease: Elastic.easeIn.config(2, 0.3)})
-rosesTl.to('#boutique-hotel h2', {opacity: 1, duration: 3, delay: 0.2, ease: Power4.easeOut})
+rosesTl.to('#hotel_acceso', {opacity: 1, duration: 1, ease: Elastic.easeIn.config(2, 0.3)})
+rosesTl.to('#boutique-hotel h2', {opacity: 1, duration: 3, ease: Power4.easeOut}, '<')
 
 let boutiqueHotelTl = gsap.timeline({
   scrollTrigger: {
@@ -491,15 +458,11 @@ let boutiqueHotelTl = gsap.timeline({
         boutiqueHotelTl.play()
       },
       onLeaveBack: function() {
-        boutiqueHotelTl.reverse()
+        //boutiqueHotelTl.reverse()
       }
   },
   onStart: function() {
-    horseLeftTl.pause()
-    horseRightTl.pause()
-    paperellaLeftTl.pause()
-    paperellaRightTl.pause()
-    console.log('tesss')
+
   },
   onComplete: function() {
 
@@ -569,18 +532,6 @@ pasticceriaGelateriaFloatingTl.to('#icecream', {x: "-=2vW", top: "-=12vH", rotat
 pasticceriaGelateriaFloatingTl.to('#macaron-green', {x: "-=2vW", rotate: "+=15", duration: 5, ease: Sine.easeOut}, "<")
 pasticceriaGelateriaFloatingTl.to('#torta', {x: "-=2vW", rotate: "-=18", duration: 6, ease: Sine.easeOut}, "<")
 
-// let pasticceriaGelateriaScrollTl = gsap.timeline({
-//   scrollTrigger: {
-//     trigger:'#pasticceria-gelateria',
-//     start:"top bottom",
-//       pin: true,
-//       pinSpacer: false,
-//   }   
-// })
-
-// pasticceriaGelateriaScrollTl.to('#pasticceria-gelateria', {autoAlpha: 0, ease: Power4.easeIn})
-// pasticceriaGelateriaScrollTl.to('#shop', {autoAlpha: 1, ease: Power4.easeIn}, '<')
-
 let shopTl = gsap.timeline({
   scrollTrigger: {
       trigger:'#shop',
@@ -598,6 +549,7 @@ let shopTl = gsap.timeline({
 
       }
   },
+  delay: 0.3,
   onStart: function() {
   },
   onComplete: function() {
@@ -606,9 +558,9 @@ let shopTl = gsap.timeline({
   paused: true,
 })
 
-shopTl.to('#scarpa-one__container', {top: "27%", left: "4%", duration: 2.6, ease: Power4.easeOut})
-shopTl.to('#scarpa-two__container', {top: "3%", left: "4%", duration: 2.6, ease: Power4.easeOut}, "<")
-shopTl.to('#coniglio__container', {top: "0%", right: "0%", duration: 2.6, ease: Power4.easeOut}, "<")
+shopTl.fromTo('#scarpa-two__container', {top: "-36%", left: "-44%", scale: 1.2, filter: "blur(3px)"}, {top: "27%", left: "4%", scale: 1, filter: "blur(0px)", duration: 2.6, ease: Power4.easeOut})
+shopTl.fromTo('#scarpa-one__container', {top: "3%", left: "4%", scale: 1.3, filter: "blur(4px)"}, {top: "3%", left: "4%", scale: 1, filter: "blur(0px)", duration: 2.6, ease: Power4.easeOut}, "<")
+shopTl.fromTo('#coniglio__container', {right: "4%", scale: 1.3, filter: "blur(4px)"}, {right: "0%", scale: 1, filter: "blur(0px)", duration: 2.6, ease: Power4.easeOut}, "<")
 shopTl.to('#moto__container', {right: "0%", duration: 2.6, ease: Power4.easeOut}, "<")
 shopTl.to('#shop h2', {opacity: 1, duration: 3, delay: 0.8, ease: Power4.easeOut})
 
@@ -644,13 +596,15 @@ areaArredoScrollTl.to('#scarpa-two', {y: "-=85%", duration: 1, ease: Power4.ease
 areaArredoScrollTl.to('#coniglio', {y: "-=65%", duration: 1, ease: Power4.easeOut}, '<')
 
 areaArredoTl.to('#coniglio-arearredo__container', {top: "0", left: "2%", duration: 3, ease: Power4.easeOut}, '<')
-areaArredoTl.fromTo('#divano', {y: '-=130', autoAlpha: 0}, {y: '0', autoAlpha: 1, duration: 1, ease: Elastic.easeInOut})
-areaArredoTl.to('#cassaforte__container', {right: '-3%', duration: 1, ease: Elastic.easeInOut}, '<+=1')
-areaArredoTl.to('#frame__container', {top: "0", right: "2%", duration: 0.6, ease: Power4.easeOut})
-areaArredoTl.to('#lamp-conluce__container', {opacity: 1, duration: 2, ease: Elastic.easeInOut}, '<')
+areaArredoTl.fromTo('#divano', {y: '-=130', autoAlpha: 0}, {y: '0', autoAlpha: 1, duration: 1, ease: Elastic.easeInOut}, '<+=0.5')
+areaArredoTl.to('#cassaforte__container', {right: '-3%', duration: 1.5, ease: Elastic.easeInOut}, '<+=0.5')
+areaArredoTl.to('#frame__container', {top: "0", right: "2%", duration: 0.6, ease: Power4.easeOut}, '<+=0.5')
+areaArredoTl.to('#lamp-conluce__container', {opacity: 1, duration: 2, ease: Elastic.easeInOut}, '<+=0.2')
 areaArredoTl.to('#arearredo h2', {opacity: 1, duration: 3, delay: 0.8, ease: Power4.easeOut})
 
 $('#zodiac-wrapper a').click(function(event) {
-  console.log('clickj')
-  scrollToAnchor('#boutique__wrapper', event)
+  event.preventDefault()
+
+  idx = parseInt(jQuery(this).attr('data-anchor')) - 1
+  goToSection(idx, direction = 'down')
 })

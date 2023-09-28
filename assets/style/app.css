@@ -59,6 +59,58 @@ h2 {
   background-color: black;
 }
 
+#home-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 65;
+  padding: 25px;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.nav-left {
+  width: 50%;
+}
+
+.nav-left .logo-menu {
+  max-width: 200px;
+  width: 100%;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.nav-right .hamburger {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.nav-right .hamburger span {
+  display: inline-block;
+  background-color: white;
+  width: 30px;
+  height: 2px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+}
+
+.nav-right .hamburger span:nth-child(2) {
+  width: 25px;
+}
+
 .introAnimation-wrapper {
   position: absolute;
   top: 0;
@@ -216,7 +268,7 @@ h2 {
 
 #leaves .leaves__img:nth-child(2) {
   width: 63%;
-  position: relative;
+  position: absolute;
 }
 
 #leaves .leaves__img:nth-child(3) {
@@ -269,12 +321,12 @@ h2 {
 }
 
 #loftRestaurant {
-  min-height: calc(100vH + 2px);
+  min-height: calc(100vH);
   overflow-y: visible;
   position: relative;
-  flex-direction: column;
+  /* flex-direction: column;
   align-items: center;
-  justify-content: flex-start !important;
+  justify-content: flex-start !important; */
 }
 
 #loftRestaurant__stonewall-bg {
@@ -290,7 +342,7 @@ h2 {
 
 .loftRestaurant__container {
   width: 100%;
-  height: 100vH;
+  height: calc(100vH);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -518,7 +570,6 @@ h2 {
   z-index: 45;
 }
 
-
 #pizza .pizza-chef-hat {
   position: absolute;
   right: 3%;
@@ -529,8 +580,8 @@ h2 {
 .pizza-cactus img {
   position: absolute;
   left: 3%;
-  top: -33%;
-  height: 66%;
+  top: -65%;
+  height: 75%;
   z-index: 27;
   object-fit: contain;
   max-width: 60%;
@@ -546,15 +597,12 @@ h2 {
 
 #ventagli-oriental__wrapper {
   position: relative;
-  background-image: url('../images/oriental-bg.jpg');
-  background-size: cover;
-  background-position: bottom center;
   z-index: 20;
-  opacity: 0;
+
 }
 
 #ventagli, #oriental {
-  height: calc(100vH + 2px);
+  height: calc(100vH);
   width: 100%;
   overflow: visible;
   position: relative;
@@ -565,6 +613,10 @@ h2 {
 #oriental {
   align-items: center;
   justify-content: center;
+  background-image: url('../images/oriental-bg.jpg');
+  background-size: cover;
+  background-position: bottom center;
+  opacity: 0;
 }
 
 #oriental h2 {
@@ -577,6 +629,7 @@ h2 {
   position: absolute;
   z-index: 40;
   height: 100%;
+  opacity: 0;
 }
 
 #ventagli img {
@@ -592,6 +645,10 @@ h2 {
   z-index: 15;
   background: linear-gradient(to bottom, transparent, rgb(0 0 0 / 71%) 49%, transparent);
   z-index: 25;
+}
+
+#ventagli-oriental__bg-black-gradient-top {
+
 }
 
 #secondaclasse__wrapper__bg-black-gradient-top {
@@ -612,74 +669,74 @@ h2 {
 }
 
 #parasol_1 {
-  left: -1%;
-  height: 64%;
-  bottom: -21%;
-  max-width: 40%;
+  left: -7%;
+  height: 84%;
+  bottom: -28%;
+  max-width: 50%;
   object-fit: contain;
 }
 
 #parasol_2 {
   left: 13%;
-  height: 87%;
-  bottom: -2%;
-  max-width: 50%;
+  height: 97%;
+  bottom: -14%;
+  max-width: 60%;
   object-fit: contain;
 }
 
 #parasol_3 {
-  left: -20%;
-  height: 97%;
-  top: 0%;
-  max-width: 73%;
+  left: -36%;
+  height: 120%;
+  top: -11%;
+  max-width: 83%;
   object-fit: contain;
 }
 
 #parasol_4 {
-  left: 23%;
-  height: 90%;
-  top: -7%;
-  max-width: 73%;
+  left: 29%;
+  height: 100%;
+  top: -33%;
+  max-width: 80%;
   object-fit: contain;
 }
 
 #parasol_5 {
-  left: 61%;
-  height: 72%;
-  top: -5%;
-  max-width: 65%;
+  left: 66%;
+  height: 82%;
+  top: -23%;
+  max-width: 75%;
   object-fit: contain;
 }
 
 #parasol_6 {
-  left: 23%;
-  height: 62%;
-  top: 45%;
-  max-width: 48%;
+  left: 32%;
+  height: 72%;
+  top: 49%;
+  max-width: 58%;
   object-fit: contain;
 }
 
 #parasol_7 {
-  left: 53%;
-  height: 69%;
-  bottom: -6%;
-  max-width: 73%;
+  left: 50%;
+  height: 89%;
+  bottom: -19%;
+  max-width: 93%;
   object-fit: contain;
 }
 
 #parasol_8 {
-  right: -16%;
-  height: 56%;
-  top: 38%;
-  max-width: 41%;
+  right: -22%;
+  height: 83%;
+  top: 32%;
+  max-width: 61%;
   object-fit: contain;
 }
 
 #parasol_9 {
   left: 3%;
-  height: 74%;
-  bottom: 26%;
-  max-width: 73%;
+  height: 94%;
+  bottom: 40%;
+  max-width: 93%;
   object-fit: contain;
 }
 
@@ -688,21 +745,21 @@ h2 {
 }
 
 #samurai-mask {
-  height: 99%;
+  height: 125%;
   position: absolute;
   left: -55%;
-  bottom: -24%;
+  bottom: -26%;
 }
 
 #umbrella {
-  height: 45%;
+  height: 60%;
   position: absolute;
-  right: 23%;
-  top: 20%;
+  right: 15%;
+  top: 13%;
 }
 
 #north-bottom-right-fan {
-  height: 99%;
+  height: 110%;
   position: absolute;
   right: -55%;
   bottom: -53%;
@@ -716,7 +773,7 @@ h2 {
 }
 
 #secondaclasse__railway, #secondaclasse__main {
-  height: calc(100vH + 2px);
+  height: calc(100vH);
   width: 100%;
   overflow: visible;
   position: relative;
@@ -725,8 +782,24 @@ h2 {
   align-items: center;
 }
 
+#smoke-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 60;
+  opacity: 0;
+}
+
+#smoke-overlay video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 #secondaclasse__main {
   justify-content: center;
+  opacity: 0;
 }
 
 #secondaclasse__main .secondaclasse-text {
@@ -763,9 +836,9 @@ h2 {
 
 #guitar {
   position: absolute;
-  height: 40%;
-  top: 5vH;
-  left: 7%;
+  height: 50%;
+  top: -10vH;
+  left: 20%;
 }
 
 #batteria {
@@ -777,9 +850,16 @@ h2 {
 
 #bistecca-bottomright {
   position: absolute;
-  height: 37%;
-  top: 32%;
+  height: 40%;
+  top: 12%;
   right: -18vH;
+}
+
+#bistecca-topright {
+  position: absolute;
+  height: 50%;
+  top: 65%;
+  right: -10vH;
 }
 
 #train {
@@ -910,6 +990,7 @@ h2 {
 }
 
 #boutique-hotel h2 {
+  text-align: center;
   opacity: 0;
   position: relative;
   z-index: 55;
@@ -928,30 +1009,30 @@ h2 {
 
 #lamp-one__container {
   position: absolute;
-  left: 3%;
+  left: 1%;
   top: -7%;
-  height: 28%;
+  height: 40%;
 }
 
 #lamp-two__container {
   position: absolute;
   left: 9%;
   top: -9%;
-  height: 23%;
+  height: 31%;
 }
 
 #lamp-three__container {
   position: absolute;
   left: 5%;
   top: -7%;
-  height: 33%;
+  height: 43%;
 }
 
 #lamp-four__container {
   position: absolute;
   left: 12%;
   top: -9%;
-  height: 26%;
+  height: 38%;
 }
 
 
@@ -975,21 +1056,21 @@ h2 {
   position: absolute;
   right: 19%;
   bottom: 55%;
-  height: 27%;
+  height: 40%;
 }
 
 #icecream__container {
   position: absolute;
   right: -9%;
   bottom: 50%;
-  height: 41%;
+  height: 50%;
 }
 
 #torta__container {
   position: absolute;
   left: 6%;
   bottom: 49%;
-  height: 30%;
+  height: 50%;
 }
 
 #pasticceria-gelateria h2 {
@@ -1050,16 +1131,16 @@ h2 {
 
 #vestiti__container {
   position: absolute;
-  bottom: -15%;
-  left: -8%;
-  height: 74%;
+  bottom: -18%;
+  left: -12%;
+  height: 80%;
 }
 
 #scarpa-one__container {
   position: absolute;
   top: -33%;
   left: -45%;
-  height: 20%;
+  height: 30%;
 }
 
 #scarpa-two__container {
@@ -1110,28 +1191,29 @@ h2 {
   bottom: -6%;
   display: flex;
   justify-content: center;
-  height: 56%;
-  left: -16%;
+  height: 75%;
+  left: -8%;
 }
 
 #frame__container {
   top: -3%;
   right: 2%;
-  height: 41%;
+  height: 55%;
 }
 
 #coniglio-arearredo__container {
   left: -30%;
-  height: 32%;
+  height: 36%;
   top: -33%;
+  z-index: 555;
 }
 
 #lamp-senzaluce__container, #lamp-conluce__container {
   bottom: 0%;
   display: flex;
   justify-content: center;
-  height: 65%;
-  left: 0%;
+  height: 72%;
+  left: 10%;
   position: absolute;
 }
 
@@ -1143,4 +1225,30 @@ h2 {
   opacity: 0;
   position: relative;
   z-index: 55;
+}
+
+.ambient-light {
+  position: absolute;
+  height: 78%;
+  width: 100%;
+  background: radial-gradient(#f8f2b4 0%, transparent 58%);
+  top: 0;
+  z-index: 25;
+  mix-blend-mode: soft-light;
+  opacity: 0;
+}
+
+@media(max-width: 500px) {
+  h2 {
+    font-size: 31px;
+  }
+  #loftRestaurant .crystal-zodiac-wrapper {
+    max-width: 90%;
+  }
+  #loftRestaurant .crystal-zodiac-wrapper > div {
+    padding: 5px;
+  }
+  #loftRestaurant .crystal-wrapper {
+    height: 47%;
+  }
 }

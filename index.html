@@ -20,6 +20,18 @@
 
   </head>
   <body>
+    <nav id="home-nav">
+      <div class="nav-left">
+        <img src="assets/images/logo-menu.png" alt="" class="logo-menu" id="logo-menu">
+      </div>
+      <div class="nav-right">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <div class="introAnimation-wrapper fullscreen">
@@ -31,16 +43,16 @@
         <section class="hero fullscreen" id="hero">
           <div class="bg-first fullscreen" id="hero__bg-first"></div>
           <div class="bg-black-gradient fullscreen" id="hero__bg-black-gradient"></div>
-          <!-- <div class="main-title" id="hero__main-title">
-            <h1 class="uppercase text-center">Areadocks</h1>
-          </div> -->
+          <div class="logo-container">
+            <img src="assets/images/logo.png" alt="" class="logo" id="introAnimation-wrapper__logo">
+          </div>
           <div class="world fullscreen" id="hero__world">
             <div class="fullscreen" id="hero__world__img-container">
               <div class="zodiac-wrapper" id="zodiac-wrapper">
-                <a href=""><img src="assets/images/cavalluccio.png" alt="" class="logo" id="zodiac-wrapper__img"></a>
-                <a href=""><img src="assets/images/ali.png" alt="" class="logo" id="zodiac-wrapper__img"></a>
-                <a href=""><img src="assets/images/paperelle.png" alt="" class="logo" id="zodiac-wrapper__img"></a>
-                <a href=""><img src="assets/images/fulmine.png" alt="" class="logo" id="zodiac-wrapper__img"></a>
+                <a href="" data-anchor="1"><img src="assets/images/cavalluccio.png" alt="" class="logo" id="zodiac-wrapper__img"></a>
+                <a href="" data-anchor="2"><img src="assets/images/ali.png" alt="" class="logo" id="zodiac-wrapper__img"></a>
+                <a href="" data-anchor="3"><img src="assets/images/paperelle.png" alt="" class="logo" id="zodiac-wrapper__img"></a>
+                <a href="" data-anchor="4"><img src="assets/images/fulmine.png" alt="" class="logo" id="zodiac-wrapper__img"></a>
               </div>
               <img src="assets/images/world.png" alt="" class="world" id="hero__world__img">
               <img src="assets/images/luna.png" alt="" class="luna" id="hero__luna__img">
@@ -77,6 +89,7 @@
                   <img src="assets/images/2nd-leaves-right.png" alt="" class="loftRestaurant__leaves">
                 </div>
               </div>
+              <div class="ambient-light"></div>
               <div class="crystal-wrapper">
                 <img src="assets/images/crystal-full.png" alt="" class="crystal crystal-main-img">
               </div>
@@ -101,7 +114,7 @@
               </div>
             </div>
           </section>
-    
+          <div class="fix-divider" style="height: 2px; background-color: black;"></div>
           <section class="pizza" id="pizza">
             <div class="bg-stonewall bg-blue-stonewall"></div>
             <div class="bg-black-gradient fullscreen" id="pizza__bg-black-gradient"></div>
@@ -129,7 +142,7 @@
             <div class="cactus pizza-cactus">
               <img src="assets/images/cactus.png" alt="" class="pizza-cactus__img" id="cactus__img">
             </div>
-            <div class="ventagli-oriental__bg-black-gradient-top" id="ventagli-oriental__bg-black-gradient-top"></div>
+            <!-- <div class="ventagli-oriental__bg-black-gradient-top" id="ventagli-oriental__bg-black-gradient-top"></div> -->
             <div class="ventagli" id="ventagli">
               <img src="assets/images/parasol_1.png" alt="" class="parasol_1" id="parasol_1">
               <img src="assets/images/parasol_2.png" alt="" class="parasol_2" id="parasol_2">
@@ -149,14 +162,16 @@
             </section>
           </div> 
           <div class="secondaclasse__wrapper" id="secondaclasse__wrapper">
-            <section class="secondaclasse__railway" id="secondaclasse__railway">
-              <img src="assets/images/train.png" alt="" class="train" id="train">
-              <img src="assets/images/secondaclasse-railway.png" alt="" class="secondaclasse-railway" id="secondaclasse-railway">
-            </section>
+            <div id="smoke-overlay">
+              <video preload="none" loop muted src="assets/videos/smoke.mp4" type="video/mp4"></video>
+            </div>
             <section class="secondaclasse__main" id="secondaclasse__main">
               <img src="assets/images/guitar.png" alt="" class="guitar" id="guitar">
               <img src="assets/images/batteria.png" alt="" class="batteria" id="batteria">
               <img src="assets/images/bistecca-bottomright.png" alt="" class="bistecca-bottomright" id="bistecca-bottomright">
+              <img src="assets/images/bistecca-topright.png" alt="" class="bistecca-topright" id="bistecca-topright">
+              <img src="assets/images/train.png" alt="" class="train" id="train">
+              <img src="assets/images/secondaclasse-railway.png" alt="" class="secondaclasse-railway" id="secondaclasse-railway">
               <img src="assets/images/secondaclasse-text.png" alt="" class="secondaclasse-text" id="secondaclasse-text">
             </section>
           </div>
@@ -175,8 +190,8 @@
                 <img src="assets/images/paperella_sx.png" alt="" class="paperella_sx" id="paperella_sx">
                 <img src="assets/images/paperella_dx.png" alt="" class="paperella_dx" id="paperella_dx">
               </div>
-              <img src="assets/images/horse_2.png" alt="" class="horse_2" id="horse_2">
-              <img src="assets/images/horse_1.png" alt="" class="horse_1" id="horse_1">
+              <img src="assets/images/horse_2.png" alt="" class="horse_1" id="horse_1">
+              <img src="assets/images/horse_1.png" alt="" class="horse_2" id="horse_2">
               <h2>Boutique Hotel</h2>
             </section>
             <section class="pasticceria-gelateria" id="pasticceria-gelateria">
